@@ -48,12 +48,25 @@
 	</li>
 </ol>
 <h5>Genus shade</h5>
+<p class="mb-0">
+	Because Hypate and Mese are fixed, a tetrachord's genus, and <span
+		class="fst-italic">shade</span> of that genus, is determined by the location
+	of Hypate and Lichanus. Aristoxenus provides a list 6 shades: 1 Enharmonic, 3
+	Chromatic, and 2 Diatonic:
+</p>
+<ul>
+	<li>Enharmonic</li>
+	<li>Soft Chromatic</li>
+	<li>Hemiolic Chromatic</li>
+	<li>Tonic Chromatic</li>
+	<li>Soft Diatonic</li>
+	<li>Sharp (or Intense) Diatonic</li>
+</ul>
 <p>
-	Aristoxenus describes Lichani (plural of Lichanus) as, "infinite in number."
-	Although 1/12 of a tone is the smallest division we see in Aristoxenus'
-	math, as long as the above criteria are met, you could construct tetrachords
-	with as granular of an interval between Parhypate and Lichanus as you want.
-	Shade describes the range of intervals that comprises a particular genus.
+	However, even though Aristoxenus provided these 6 examples, he also suggests
+	that, "Lichani are infinite in number." This implies that you could
+	subdivide the distance between Hypate and Mese with whichever intervals you
+	want, so long as the above guidelines are followed.
 </p>
 <h5>Enharmonic describes...</h5>
 <ol>
