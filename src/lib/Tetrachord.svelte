@@ -19,8 +19,15 @@
 			value: null,
 			unmelodic: false,
 		},
+		frequencies: {
+			hypate: 440,
+			parhypate: 440 * Math.pow(2, 50 / 1200),
+			lichanus: 440 * Math.pow(2, 100 / 1200),
+			mese: 440 * Math.pow(2, 500 / 1200),
+		},
 		error: null,
 		unmelodic: false,
+		light: null,
 	});
 	let tickWidth = 2;
 	let textHeight = $state(0);
@@ -55,7 +62,80 @@
 		}, 5000);
 	}
 
-	function recalculate() {
+	function makeFrequencies() {
+		tetrachord.frequencies.parhypate =
+			tetrachord.frequencies.hypate *
+			Math.pow(2, tetrachord.parhypate.value / 1200);
+		tetrachord.frequencies.lichanus =
+			tetrachord.frequencies.hypate *
+			Math.pow(2, tetrachord.lichanus.value / 1200);
+		tetrachord.frequencies.mese =
+			tetrachord.frequencies.hypate *
+			Math.pow(2, tetrachord.total / 1200);
+	}
+
+	function clearChord() {
+		tetrachord.light = null;
+		Tone.getTransport().stop();
+		Tone.getTransport().cancel();
+	}
+
+	function playChord() {
+		Tone.getTransport().stop();
+		Tone.getTransport().cancel();
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "hypate";
+			synth.triggerAttack(tetrachord.frequencies.hypate, time, 1);
+		}, 0);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "parhypate";
+			synth.triggerAttack(tetrachord.frequencies.parhypate, time, 0.8);
+		}, 0.75);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "lichanus";
+			synth.triggerAttack(tetrachord.frequencies.lichanus, time, 0.7);
+		}, 1.5);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "mese";
+			synth.triggerAttack(tetrachord.frequencies.mese, time, 0.6);
+		}, 2.25);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = null;
+		}, 3);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "mese";
+			synth.triggerAttack(tetrachord.frequencies.mese, time, 0.6);
+		}, 4.5);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "lichanus";
+			synth.triggerAttack(tetrachord.frequencies.lichanus, time, 0.6);
+		}, 5.25);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "parhypate";
+			synth.triggerAttack(tetrachord.frequencies.parhypate, time, 0.6);
+		}, 6);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = "hypate";
+			synth.triggerAttack(tetrachord.frequencies.hypate, time, 0.6);
+		}, 6.75);
+
+		Tone.getTransport().scheduleOnce((time) => {
+			tetrachord.light = null;
+		}, 7.5);
+
+		Tone.getTransport().start();
+	}
+
+	function errorChecking() {
 		// error checking
 		if (tetrachord.parhypate.storage < 50) {
 			makeError("Parhypate must be at least 50 cents");
@@ -88,8 +168,9 @@
 			resetStorage();
 			return;
 		}
+	}
 
-		// reset values
+	function resetTitle() {
 		tetrachord.title = {
 			diesis: "",
 			genus: "",
@@ -97,33 +178,33 @@
 			value: null,
 			unmelodic: false,
 		};
+	}
 
-		tetrachord.unmelodic = false;
-
-		//calculate unmelodic
+	function unmelodic() {
 		if (
 			tetrachord.parhypate.storage >
 			tetrachord.lichanus.storage - tetrachord.parhypate.storage
 		) {
-			tetrachord.unmelodic = true;
+			tetrachord.title.unmelodic = true;
 		}
 
 		if (
 			tetrachord.lichanus.storage - tetrachord.parhypate.storage <
 			tetrachord.parhypate.storage
 		) {
-			tetrachord.unmelodic = true;
+			tetrachord.title.unmelodic = true;
 		}
 
 		if (tetrachord.total - tetrachord.lichanus.storage < 200) {
-			tetrachord.unmelodic = true;
+			tetrachord.title.unmelodic = true;
 		}
 
 		if (tetrachord.total - tetrachord.lichanus.storage > 400) {
-			tetrachord.unmelodic = true;
+			tetrachord.title.unmelodic = true;
 		}
+	}
 
-		// calculating diesis
+	function diesis() {
 		if (tetrachord.parhypate.storage < 67) {
 			if (tetrachord.parhypate.storage === 50) {
 				tetrachord.title.diesis = "Enharmonic";
@@ -138,14 +219,23 @@
 				tetrachord.title.diesis = "Soft Chromatic";
 			} else if (tetrachord.parhypate.storage === 75) {
 				tetrachord.title.diesis = "Hemiolic Chromatic";
-			} else {
-				tetrachord.title.diesis = "Larger Chromatic";
+			} else if (
+				tetrachord.parhypate.storage > 67 &&
+				tetrachord.parhypate.storage < 75
+			) {
+				tetrachord.title.diesis = "Larger than Soft Chromatic";
+			} else if (
+				tetrachord.parhypate.storage > 75 &&
+				tetrachord.parhypate.storage < 100
+			) {
+				tetrachord.title.diesis = "Larger than Hemiolic Chromatic";
 			}
 		} else {
 			tetrachord.title.diesis = "Largest Chromatic (or Diatonic)";
 		}
+	}
 
-		// calculating genus
+	function genus() {
 		const genus = tetrachord.total - tetrachord.lichanus.storage;
 		if (genus > 367) {
 			tetrachord.title.genus = "Enharmonic";
@@ -154,8 +244,9 @@
 		} else if (genus <= 250) {
 			tetrachord.title.genus = "Diatonic";
 		}
+	}
 
-		// title value
+	function specialTitle() {
 		const fixedCases = {
 			"Enharmonic tetrachord":
 				tetrachord.parhypate.storage === 50 &&
@@ -175,15 +266,6 @@
 			"Sharp (Intense) Diatonic tetrachord":
 				tetrachord.parhypate.storage === 100 &&
 				tetrachord.lichanus.storage === 300,
-			"Unnamed Chromatic tetrachord":
-				tetrachord.parhypate.storage === 67 &&
-				tetrachord.lichanus.storage === 200,
-			"Diatonic tetrachord with a Soft Chromatic Diesis":
-				tetrachord.parhypate.storage === 67 &&
-				tetrachord.lichanus.storage === 300,
-			"Diatonic tetrachord with a Hemiolic Chromatic Diesis":
-				tetrachord.parhypate.storage === 75 &&
-				tetrachord.lichanus.storage === 300,
 		};
 
 		Object.keys(fixedCases).forEach((key) => {
@@ -191,43 +273,43 @@
 				tetrachord.title.value = key;
 			}
 		});
-
-		// assign new values so fields update
-		setValueToStorage();
 	}
 
-	function makeFrequencies() {
-		const hypate = 440;
-		const parhypate =
-			hypate * Math.pow(2, tetrachord.parhypate.value / 1200);
-		const lichanus = hypate * Math.pow(2, tetrachord.lichanus.value / 1200);
-		const mese = hypate * Math.pow(2, tetrachord.total / 1200);
-		return [hypate, parhypate, lichanus, mese];
+	function recalculate() {
+		clearChord();
+
+		errorChecking();
+
+		resetTitle();
+
+		unmelodic();
+
+		diesis();
+
+		genus();
+
+		specialTitle();
+
+		setValueToStorage();
+
+		makeFrequencies();
 	}
 
 	async function play() {
 		if (!audio) {
 			await Tone.start();
-			synth = new Tone.PluckSynth({
-				attackNoise: 1,
-				release: 2,
-				
-			}).toDestination();
 			audio = true;
+			synth = new Tone.Sampler({
+				urls: {
+					C4: "harp.wav",
+				},
+				onload: () => {
+					playChord();
+				},
+			}).toDestination();
+		} else {
+			playChord();
 		}
-
-		const frequencies = makeFrequencies();
-		const now = Tone.now();
-
-		synth.triggerAttackRelease(frequencies[0], "8n", now);
-		synth.triggerAttackRelease(frequencies[1], "8n", now + 0.5);
-		synth.triggerAttackRelease(frequencies[2], "8n", now + 1);
-		synth.triggerAttackRelease(frequencies[3], "8n", now + 1.5);
-
-		synth.triggerAttackRelease(frequencies[3], "8n", now + 2.5);
-		synth.triggerAttackRelease(frequencies[2], "8n", now + 3);
-		synth.triggerAttackRelease(frequencies[1], "8n", now + 3.5);
-		synth.triggerAttackRelease(frequencies[0], "8n", now + 4);
 	}
 
 	onMount(() => {
@@ -237,8 +319,12 @@
 
 {#snippet tick(id, left)}
 	<div
-		class="text-bg position-absolute d-flex justify-content-center align-items-center translate-middle-y"
-		style="width: {tickWidth}px; height: {textHeight}px; left: {left}%;">
+		class="position-absolute d-flex justify-content-center align-items-center {tetrachord.light ===
+		id
+			? 'accent-bg wiggling'
+			: 'text-bg'}"
+		style="width: {tickWidth}px; height: {textHeight}px; left: {left}%; top: calc(50% - {textHeight /
+			2}px);">
 	</div>
 {/snippet}
 
@@ -287,7 +373,7 @@
 	</div>
 	<!-- Title display -->
 	<h3 class="text-center mb-3">
-		{#if tetrachord.unmelodic}
+		{#if tetrachord.title.unmelodic}
 			This is an unmelodic tetrachord
 		{:else if tetrachord.title.value}
 			This is a{tetrachord.title.value &&
@@ -322,13 +408,13 @@
 	</h3>
 	<!-- Breakdown -->
 	<div class="overflow-y-auto mb-3" style="max-height: 200px;">
-		{#if tetrachord.unmelodic}
+		{#if tetrachord.title.unmelodic}
 			<h5>
 				What makes a tetrachord <span class="fst-italic">unmelodic</span
 				>?
 			</h5>
 			<p>A tetrachord is unmelodic if any of the following are true</p>
-			<ul>
+			<ol>
 				<li>
 					If the interval from Hypate to Parhypate, or from Parhypate
 					to Lichanus, is less than 1/4 tone
@@ -337,7 +423,17 @@
 					If the interval from Paryhypate to Lichanus is less than the
 					interval from Hypate to Parhypate
 				</li>
-			</ul>
+				<li>
+					If the interval from Lichanus to Mese isn't between 1 and 2
+					tones
+				</li>
+			</ol>
+			<p>
+				Because the calculator will prevent you from inputting values
+				that would make items 1 or 3 true, this tetrachord must be
+				unmelodic because it's middle interval is less than the left
+				most interval
+			</p>
 		{:else}
 			<h5>What's the genus?</h5>
 			<p>
@@ -425,3 +521,27 @@
 		{/if}
 	</div>
 </div>
+
+<style>
+	@keyframes wiggle {
+		0% {
+			transform: translateY(0);
+		}
+		25% {
+			transform: translateY(-2px);
+		}
+		50% {
+			transform: translateY(2px);
+		}
+		75% {
+			transform: translateY(-2px);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	.wiggling {
+		animation: wiggle 0.1s infinite;
+	}
+</style>
