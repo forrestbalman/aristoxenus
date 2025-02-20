@@ -1,4 +1,5 @@
 <script>
+	import * as Tone from "tone";
 	import { onMount, onDestroy } from "svelte";
 
 	let tetrachord = $state({
@@ -25,6 +26,8 @@
 	let textHeight = $state(0);
 	let buttonHeight = $state(0);
 	let errorTimeout;
+	let audio = $state(false);
+	let synth;
 
 	function percent(value) {
 		return (value / tetrachord.total) * 100;
@@ -193,14 +196,42 @@
 		setValueToStorage();
 	}
 
+	function makeFrequencies() {
+		const hypate = 440;
+		const parhypate =
+			hypate * Math.pow(2, tetrachord.parhypate.value / 1200);
+		const lichanus = hypate * Math.pow(2, tetrachord.lichanus.value / 1200);
+		const mese = hypate * Math.pow(2, tetrachord.total / 1200);
+		return [hypate, parhypate, lichanus, mese];
+	}
+
+	async function play() {
+		if (!audio) {
+			await Tone.start();
+			synth = new Tone.PluckSynth({
+				attackNoise: 1,
+				release: 2,
+				
+			}).toDestination();
+			audio = true;
+		}
+
+		const frequencies = makeFrequencies();
+		const now = Tone.now();
+
+		synth.triggerAttackRelease(frequencies[0], "8n", now);
+		synth.triggerAttackRelease(frequencies[1], "8n", now + 0.5);
+		synth.triggerAttackRelease(frequencies[2], "8n", now + 1);
+		synth.triggerAttackRelease(frequencies[3], "8n", now + 1.5);
+
+		synth.triggerAttackRelease(frequencies[3], "8n", now + 2.5);
+		synth.triggerAttackRelease(frequencies[2], "8n", now + 3);
+		synth.triggerAttackRelease(frequencies[1], "8n", now + 3.5);
+		synth.triggerAttackRelease(frequencies[0], "8n", now + 4);
+	}
+
 	onMount(() => {
 		recalculate();
-	});
-
-	onDestroy(() => {
-		if (errorTimeout) {
-			clearTimeout(errorTimeout);
-		}
 	});
 </script>
 
@@ -377,6 +408,14 @@
 			style="height: {buttonHeight}px;"
 			onclick={recalculate}>
 			Recalculate
+		</button>
+		<button
+			type="button"
+			class="bg-success text-light border-0 rounded-2 px-3"
+			style="height: {buttonHeight}px;"
+			onclick={play}
+			aria-label="Play">
+			<i class="bi bi-play-fill"></i>
 		</button>
 	</div>
 	<!-- Error -->
