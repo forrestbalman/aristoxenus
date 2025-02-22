@@ -97,7 +97,7 @@
 		also shared by some chromatic tetrachords).
 	</li>
 	<li>
-		The interval between Lichanus and Meses when it's between 1 (about 200
-		cents) and 1 + 1/2 tones.
+		The interval between Lichanus and Mese when it's between 1 (about 200
+		cents) and 1 + 5/6 tones.
 	</li>
 </ol>
