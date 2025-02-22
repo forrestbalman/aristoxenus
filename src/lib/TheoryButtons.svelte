@@ -16,7 +16,7 @@
 	{:else if value.short}
 		<button
 			type="button"
-			class="bg-success border-0 rounded-2 py-1 px-3"
+			class="accent-bg border-0 rounded-2 py-1 px-3"
 			onclick={() => {
 				value.short = false;
 				value.long = true;
