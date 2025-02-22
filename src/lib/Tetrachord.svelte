@@ -242,6 +242,21 @@
 			"Sharp (Intense) Diatonic tetrachord":
 				tetrachord.parhypate.storage === 100 &&
 				tetrachord.lichanus.storage === 300,
+			"Unnamed Chromatic":
+				tetrachord.parhypate.storage === 66 &&
+				tetrachord.lichanus.storage === 200,
+			"Diatonic with Tonic Chromatic Diesis":
+				tetrachord.parhypate.storage === 66 &&
+				tetrachord.lichanus.storage === 300,
+			"Diatonic with Hemiolic Chromatic Diesis":
+				tetrachord.parhypate.storage === 75 &&
+				tetrachord.lichanus.storage === 300,
+			"Rejected Chromatic":
+				tetrachord.parhypate.storage === 100 &&
+				tetrachord.lichanus.storage === 150,
+			"Unmelodic Chromatic":
+				tetrachord.parhypate.storage === 75 &&
+				tetrachord.lichanus.storage === 133,
 		};
 
 		Object.keys(fixedCases).forEach((key) => {
@@ -414,40 +429,42 @@
 		</div>
 	</div>
 	<!-- Title display -->
-	<h3 class="text-center mb-3">
-		{#if tetrachord.title.unmelodic}
-			This is an unmelodic tetrachord
-		{:else if tetrachord.title.value}
-			This is a{tetrachord.title.value &&
-			(tetrachord.title.value[0].toLowerCase() === "a" ||
-				tetrachord.title.value[0].toLowerCase() === "e" ||
-				tetrachord.title.value[0].toLowerCase() === "i" ||
-				tetrachord.title.value[0].toLowerCase() === "o" ||
-				tetrachord.title.value[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.value}
-		{:else}
-			This is a{tetrachord.title.genus &&
-			(tetrachord.title.genus[0].toLowerCase() === "a" ||
-				tetrachord.title.genus[0].toLowerCase() === "e" ||
-				tetrachord.title.genus[0].toLowerCase() === "i" ||
-				tetrachord.title.genus[0].toLowerCase() === "o" ||
-				tetrachord.title.genus[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.genus} tetrachord with a{tetrachord.title
-				.diesis &&
-			(tetrachord.title.diesis[0].toLowerCase() === "a" ||
-				tetrachord.title.diesis[0].toLowerCase() === "e" ||
-				tetrachord.title.diesis[0].toLowerCase() === "i" ||
-				tetrachord.title.diesis[0].toLowerCase() === "o" ||
-				tetrachord.title.diesis[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.diesis} diesis
-		{/if}
-	</h3>
+	<div style="min-height: 75px;">
+		<h3 class="text-center">
+			{#if tetrachord.title.unmelodic}
+				This is an unmelodic tetrachord
+			{:else if tetrachord.title.value}
+				This is a{tetrachord.title.value &&
+				(tetrachord.title.value[0].toLowerCase() === "a" ||
+					tetrachord.title.value[0].toLowerCase() === "e" ||
+					tetrachord.title.value[0].toLowerCase() === "i" ||
+					tetrachord.title.value[0].toLowerCase() === "o" ||
+					tetrachord.title.value[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.value}
+			{:else}
+				This is a{tetrachord.title.genus &&
+				(tetrachord.title.genus[0].toLowerCase() === "a" ||
+					tetrachord.title.genus[0].toLowerCase() === "e" ||
+					tetrachord.title.genus[0].toLowerCase() === "i" ||
+					tetrachord.title.genus[0].toLowerCase() === "o" ||
+					tetrachord.title.genus[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.genus} tetrachord with a{tetrachord.title
+					.diesis &&
+				(tetrachord.title.diesis[0].toLowerCase() === "a" ||
+					tetrachord.title.diesis[0].toLowerCase() === "e" ||
+					tetrachord.title.diesis[0].toLowerCase() === "i" ||
+					tetrachord.title.diesis[0].toLowerCase() === "o" ||
+					tetrachord.title.diesis[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.diesis} diesis
+			{/if}
+		</h3>
+	</div>
 	<!-- Instructions -->
 	<div>
 		<h5>How do I use this thing?</h5>
