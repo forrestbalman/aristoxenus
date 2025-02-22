@@ -1,34 +1,10 @@
 <script>
 	import * as Tone from "tone";
 	import { onMount, onDestroy } from "svelte";
+	import { fraction } from "$lib/fraction.js";
+	import { ratio } from "$lib/ratio.js";
+	import { tetrachord, presets } from "$lib/tetrachord.svelte.js";
 
-	let tetrachord = $state({
-		total: 500,
-		parhypate: {
-			storage: 50,
-			value: 50,
-		},
-		lichanus: {
-			storage: 100,
-			value: 100,
-		},
-		title: {
-			diesis: "Enharmonic",
-			genus: "Enharmonic",
-			pycnum: true,
-			value: null,
-			unmelodic: false,
-		},
-		frequencies: {
-			hypate: 440,
-			parhypate: 440 * Math.pow(2, 50 / 1200),
-			lichanus: 440 * Math.pow(2, 100 / 1200),
-			mese: 440 * Math.pow(2, 500 / 1200),
-		},
-		error: null,
-		unmelodic: false,
-		light: null,
-	});
 	let tickWidth = 2;
 	let textHeight = $state(0);
 	let buttonHeight = $state(0);
@@ -205,22 +181,22 @@
 	}
 
 	function diesis() {
-		if (tetrachord.parhypate.storage < 67) {
+		if (tetrachord.parhypate.storage < 66) {
 			if (tetrachord.parhypate.storage === 50) {
 				tetrachord.title.diesis = "Enharmonic";
 			} else {
 				tetrachord.title.diesis = "Larger Enharmonic";
 			}
 		} else if (
-			tetrachord.parhypate.storage >= 67 &&
+			tetrachord.parhypate.storage >= 66 &&
 			tetrachord.parhypate.storage < 100
 		) {
-			if (tetrachord.parhypate.storage === 67) {
+			if (tetrachord.parhypate.storage === 66) {
 				tetrachord.title.diesis = "Soft Chromatic";
 			} else if (tetrachord.parhypate.storage === 75) {
 				tetrachord.title.diesis = "Hemiolic Chromatic";
 			} else if (
-				tetrachord.parhypate.storage > 67 &&
+				tetrachord.parhypate.storage > 66 &&
 				tetrachord.parhypate.storage < 75
 			) {
 				tetrachord.title.diesis = "Larger than Soft Chromatic";
@@ -237,9 +213,9 @@
 
 	function genus() {
 		const genus = tetrachord.total - tetrachord.lichanus.storage;
-		if (genus > 367) {
+		if (genus > 366) {
 			tetrachord.title.genus = "Enharmonic";
-		} else if (genus <= 367 && genus > 250) {
+		} else if (genus <= 366 && genus > 250) {
 			tetrachord.title.genus = "Chromatic";
 		} else if (genus <= 250) {
 			tetrachord.title.genus = "Diatonic";
@@ -252,7 +228,7 @@
 				tetrachord.parhypate.storage === 50 &&
 				tetrachord.lichanus.storage === 100,
 			"Soft Chromatic tetrachord":
-				tetrachord.parhypate.storage === 67 &&
+				tetrachord.parhypate.storage === 66 &&
 				tetrachord.lichanus.storage === 133,
 			"Hemiolic Chromatic tetrachord":
 				tetrachord.parhypate.storage === 75 &&
@@ -273,6 +249,12 @@
 				tetrachord.title.value = key;
 			}
 		});
+	}
+
+	function preset(parhypate, lichanus) {
+		tetrachord.parhypate.storage = parhypate;
+		tetrachord.lichanus.storage = lichanus;
+		recalculate();
 	}
 
 	function recalculate() {
@@ -331,8 +313,8 @@
 <div class="d-flex flex-column my-5">
 	<!-- Tetrachord diagram -->
 	<div
-		class="w-100 d-flex accent-bg position-relative mb-5"
-		style="height: 2px;">
+		class="w-100 d-flex accent-bg position-relative"
+		style="height: 2px; margin-bottom: {buttonHeight / 2}px;">
 		{@render tick("hypate", 0)}
 		<div
 			id="interval-hypate-to-parhypate"
@@ -371,6 +353,66 @@
 		</div>
 		{@render tick("mese", percent(tetrachord.total))}
 	</div>
+	<!-- Fractions -->
+	<div class="d-flex">
+		<div
+			id="fraction-hypate-to-parhypate"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: calc({percent(
+				tetrachord.parhypate.value
+			)}% + {tickWidth * 2}px);">
+			<p class="m-0">{fraction(tetrachord.parhypate.value)}</p>
+		</div>
+		<div
+			id="fraction-parhypate-to-lichanus"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: {percent(tetrachord.lichanus.value) -
+				percent(tetrachord.parhypate.value)}%;">
+			<p class="m-0">
+				{fraction(
+					tetrachord.lichanus.value - tetrachord.parhypate.value
+				)}
+			</p>
+		</div>
+		<div
+			id="fraction-lichanus-to-mese"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: calc({percent(tetrachord.total) -
+				percent(tetrachord.lichanus.value)}% + {tickWidth * 4}px);">
+			<p class="m-0">
+				{fraction(tetrachord.total - tetrachord.lichanus.value)}
+			</p>
+		</div>
+	</div>
+	<!-- Ratios -->
+	<div class="d-flex mb-5">
+		<div
+			id="ratio-hypate-to-parhypate"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: calc({percent(
+				tetrachord.parhypate.value
+			)}% + {tickWidth * 2}px);">
+			<p class="m-0">{ratio(tetrachord.parhypate.value)}</p>
+		</div>
+		<div
+			id="ratio-parhypate-to-lichanus"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: {percent(tetrachord.lichanus.value) -
+				percent(tetrachord.parhypate.value)}%;">
+			<p class="m-0">
+				{ratio(tetrachord.lichanus.value - tetrachord.parhypate.value)}
+			</p>
+		</div>
+		<div
+			id="ratio-lichanus-to-mese"
+			class="d-flex justify-content-center align-items-center user-select-none"
+			style="width: calc({percent(tetrachord.total) -
+				percent(tetrachord.lichanus.value)}% + {tickWidth * 4}px);">
+			<p class="m-0">
+				{ratio(tetrachord.total - tetrachord.lichanus.value)}
+			</p>
+		</div>
+	</div>
 	<!-- Title display -->
 	<h3 class="text-center mb-3">
 		{#if tetrachord.title.unmelodic}
@@ -406,6 +448,22 @@
 			{tetrachord.title.diesis} diesis
 		{/if}
 	</h3>
+	<!-- Instructions -->
+	<div>
+		<h5>How do I use this thing?</h5>
+		<p>
+			Input the two intervals: Hypate to Parhypate, and Hypate to Lichanus
+			(that's scale degrees 1 to 3, not scale degrees 2 to 3), into the
+			fields below, then click <span class="accent-bg px-2 rounded-1"
+				>Recalculate</span>
+			to generate a tetrachord.
+		</p>
+		<p>
+			Because we're working with whole numbers, fractions are approximate.
+			For calculation purposes, numbers like 66 and 67 both represent 1/3
+			of a tone, for example.
+		</p>
+	</div>
 	<!-- Breakdown -->
 	<div class="overflow-y-auto mb-3" style="max-height: 200px;">
 		{#if tetrachord.title.unmelodic}
@@ -478,9 +536,15 @@
 			</p>
 		{/if}
 	</div>
+	<!-- Error -->
+	<div style="min-height: {buttonHeight}px;">
+		{#if tetrachord.error}
+			<p class="accent-text text-center m-0">{tetrachord.error}</p>
+		{/if}
+	</div>
 	<!-- Form input -->
 	<div
-		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-3">
+		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-5">
 		<div>
 			<label for="parhypate">Hypate to Parhypate (in cents)</label>
 			<input
@@ -507,18 +571,30 @@
 		</button>
 		<button
 			type="button"
-			class="bg-success text-light border-0 rounded-2 px-3"
+			class="accent-bg text-light border-0 rounded-2 px-3"
 			style="height: {buttonHeight}px;"
 			onclick={play}
 			aria-label="Play">
 			<i class="bi bi-play-fill"></i>
 		</button>
 	</div>
-	<!-- Error -->
-	<div style="min-height: {buttonHeight}px;">
-		{#if tetrachord.error}
-			<p class="accent-text text-center m-0">{tetrachord.error}</p>
-		{/if}
+	<!-- Presets -->
+	<div>
+		<h4 class="mb-3">
+			Click a button to generate one of the tetrachords Aristoxenus
+			explicitly mentions in <span class="fst-italic"
+				>Elementa Harmonica</span>
+		</h4>
+	</div>
+	<div class="d-flex justify-content-center flex-wrap gap-2">
+		{#each Object.entries(presets) as [name, values]}
+			<button
+				type="button"
+				class="accent-bg text-light border-0 rounded-2 px-3"
+				onclick={() => preset(values[0], values[1])}>
+				{name}
+			</button>
+		{/each}
 	</div>
 </div>
 
