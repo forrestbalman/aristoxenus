@@ -232,15 +232,13 @@ export function approximateFraction(decimal, maxDenominator = 1000) {
 }
 
 export function ratio(cents) {
-	const actualCents = 100 * centMappings[cents] || cents;
-
 	// If the cents value matches a known ratio, return it directly
-	if (knownRatios[actualCents]) {
-		const { numerator, denominator } = knownRatios[actualCents];
+	if (knownRatios[cents]) {
+		const { numerator, denominator } = knownRatios[cents];
 		return `${numerator}:${denominator}`;
 	} else {
 		// Otherwise, calculate the ratio using 12-TET formula
-		const ratio = Math.pow(2, actualCents / 1200);
+		const ratio = Math.pow(2, 200 * centMappings[cents % 200] / 1200);
 		const fraction = approximateFraction(ratio);
 
 		// Return the ratio as a fraction

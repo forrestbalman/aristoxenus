@@ -7,10 +7,11 @@ export function fraction(cents) {
 	if (centsRemainder > 0) {
 		const { numerator, denominator } = approximateFraction(centsRemainder);
 		const fractionString = `${numerator}/${denominator}`;
-		return tones >= 1
+
+		return tones > 0
 			? `${tones} + ${fractionString} tones`
 			: `${fractionString} tone`;
 	} else {
-		return `${tones} tones`;
+		return tones > 1 ? `${tones} tones` : `${tones} tone`;
 	}
 }

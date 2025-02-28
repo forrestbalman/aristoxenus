@@ -125,10 +125,9 @@
 			<span class="fst-italic">genera</span> (singular, genus) of tetrachords
 			in the music theory of Aristoxenus' time. Although it might not be the
 			most appropriate comparison, you might think about the genera of tetrachords
-			like the triads of Western music theory. Where major, minor, diminished,
-			and augmented are all different combinations of Major and Minor Thirds,
-			the genera of tetrachords describe ranges of different intervals found
-			in a tetrachord.
+			like how triads are classified in Western music theory. Depending on
+			the intervals a tetrachord contains, its qualities can be classified
+			as belonging to 1 of the 3 genera.
 		</p>
 	</div>
 	<div id="whats-a-tetrachord">
@@ -161,10 +160,312 @@
 			third tone, and the lowest diatonic (and highest chromatic) diesis is
 			a half (semi) tone.
 		</p>
+		<h5>What are tetrachords used for exactly?</h5>
+		<p>
+			Tetrachords are collections of pitches that are ultimately combined
+			to create a larger scale that completes the octave. Without getting
+			too ahead of ourselves, if we take a tetrachord consisting of: B, C,
+			D, and E (which happen to be classifiable as a diatonic tetrachord),
+			if we transpose that tetrachord up a Perfect Fourth, we get a
+			tetrachord with an identical intervallic structure: E, F, G, and A.
+		</p>
 	</div>
-	<div id="scale-degrees"></div>
-	<div id="lichanus-to-mese-rules"></div>
-	<div id="hypate-to-parhypate-rules"></div>
+	<div id="scale-degrees">
+		<h5>The Greeks knew about scale degrees?</h5>
+		<p>
+			Yes they did! In fact, Aristoxenus talks at length about scales and
+			adopting a system focused on function as opposed to the fixed names
+			of the music that predated his time (he actually has quite a few
+			unkind things to say about a few of his predecessors if you like a
+			juicy 🧃 read). Using an octave scale comprised of two conjoined
+			tetrachords, like I mentioned above, the scale degrees are from
+			lowest to highest as follows
+		</p>
+		<ol>
+			<li>
+				Hypate - "Lowest" in the sense that it's located at the "bottom"
+				of the scale
+			</li>
+			<li>Parhypate - "Next to Hypate"</li>
+			<li>
+				Lichanus - The "forefinger" is used when playing this string on
+				the lyre.
+			</li>
+			<li>
+				Mese - "Middle" of the 7 unique pitches produces by interlocking
+				two tetrachords.
+			</li>
+			<li>Paramese - "Next to Mese"</li>
+			<li>Trite - "Third" in position of the higher tetrachord.</li>
+			<li>Paranete - "Next to Nete"</li>
+			<li>
+				Nete - "Lowest" on the lyre. Contrary to our use of low, which
+				is typically associated with pitch, the lowest string on the
+				lyre actually produces the highest pitch.
+			</li>
+		</ol>
+		<h5>An important note about terms used by Aristoxenus</h5>
+		<p>
+			When describing the structure of a tetrachord, Aristoxenus almost
+			exclusively refers to the pitches of the lower tetrachord: Hypate,
+			Parhypate, Lichanus, and Mese. Although he doesn't explicitly say
+			why in either book, my guess is that because a Greek scale is
+			symmetrical in the sense that it's a combination of two structurally
+			identical tetrachords, being consistent and picking one makes sense
+			for explanatory purposes.
+		</p>
+	</div>
+	<div id="more-on-intervals">
+		<h5>Open your mind to unfamiliar intervals</h5>
+		<p>
+			In your average Western music curriculum today, intervals are taught
+			as they pertain to the "chromatic" scale (not to be confused with
+			the chromatic genus of tetrachord). When dividing the octave into
+			12, almost exclusively, equal parts, the resulting interval is 1/2
+			tone (or a Minor Second). However, Greek musicians made use of
+			intervals that were smaller than a semi tone. When regarding
+			individual intervals, the smallest practically usable interval in
+			Aristoxenus' theories is the quarter tone.
+		</p>
+		<p>
+			However, when performing calculations involving intervals that would
+			appear in Aristoxenus' theories, we often encounter intervals that
+			are smaller than a quarter tone. They won't appear as standalone, or <span
+				class="fst-italic">continuous</span> in Aristoxenus' words, intervals
+			in a scale, but they can be used to express differences between intervals.
+			The smallest division of a tone that we encounter in either book is 1/12
+			(about 17 cents) of a tone.
+		</p>
+		<h5>More on Dieses</h5>
+		<p>
+			As I mentioned earlier, the diesis is the smallest interval in the
+			tetrachord. It also always happens to be located between Hypate and
+			Parhypate. The interval from Parhypate to Lichanus can also be the
+			same size as the diesis, however, the smallest interval in the
+			tetrachord will always be between Hypate and Parhypate.
+		</p>
+		<p>
+			I'll talk about even more specifics on dieses later, however, for
+			now, knowing the smallest possible dieses for each genus is
+			important when understanding some of the math moving forward.
+		</p>
+		<ul>
+			<li>
+				The smallest diesis encountered in the Enharmonic genus is 1/4
+				tone (50 cents).
+			</li>
+			<li>
+				The smallest diesis encountered in the Chromatic genus is 1/3
+				tone (about 67 cents).
+			</li>
+			<li>
+				The smallest diesis encountered in the Diatonic genus is 1/2
+				tone (100 cents), however this also happens to be the largest
+				diesis in the Chromatic genus.
+			</li>
+		</ul>
+	</div>
+	<div id="loci-of-the-parhypate-and-lichanus">
+		<h5>
+			What's Aristoxenus' deal with <span class="fst-italics">loci</span>?
+		</h5>
+		<p>
+			Aristoxenus uses the term loci (singular, locus) to talk about how
+			the placement of Parhypate and Lichanus in the tetrachord
+		</p>
+		. Because we know that the outermost interval of a tetrachord (Hypate to
+		Mese) is always a perfect fourth, so long as the rest of the guidelines for
+		a "melodious" tetrachord are followed, the placement of Parhypate and Lichanus
+		within the tetrachord can be moved around infinitely. The guidelines are
+		as follows...
+		<ul>
+			<li>The tetrachord's intervals must add up to a perfect Fourth.</li>
+			<li>The smallest usable interval is 1/4 tone.</li>
+			<li>
+				The smallest interval must be the leftmost interval, but nothing
+				is stopping this interval from being repeated in the middle
+				(this results in what's called <span class="fst-italics"
+					>Pycnum</span
+				>).
+			</li>
+			<li>
+				The rightmost interval must be between 1 and 2 tones
+				(inclusive).
+			</li>
+		</ul>
+	</div>
 	<div id="the-six-tetrachords"></div>
-	<div id="shading-and-naming"></div>
+	<div id="shading-and-naming">
+		<div id="what-is-shading">
+			<h5>What is shading?</h5>
+			<p>
+				Aristoxenus' refers to the Lichani (singular, Lichanus) as being
+				"infinite in number." Although many of these intervals aren't
+				practical to produce organically with the precision the
+				calculator is able to provide, instead of solely suggesting that
+				there are a fixed number of divisions of the tetrachord, he
+				suggests that tetrachords occupy a <span class="fst-italic"
+					>shaded</span> area of a particular genus.
+			</p>
+			<p>
+				From a theoretical standpoint, this is what inspired the
+				calculator. Creating a utility that analyzes and plays back
+				tetrachords with obscure subdivisions of the perfect Fourth.
+				However, I think that when diving into the theory, it's easy to
+				forget about the aesthetics that inspired a lot of Aristoxenus'
+				thinking.
+			</p>
+			<p>
+				Aristoxenus' was all about practicality. He observed, and
+				attempted to explain, that music follows natural laws that
+				impact the way we're able to perceive and produce pitch. He was
+				keen to the fact that too many of the same small interval can't
+				realistically/accurately be produced in succession. He also knew
+				that the voice tends to fluctuate in pitch depending on the
+				direction of the interval, namely, but also because of our
+				inability as humans to produce with mechanical precision.
+			</p>
+			<p>
+				That being said, what I think Aristoxenus ultimately hoped
+				shading of the genera would offer is the notion that despite
+				differences in pitch that aren't noticeable, the genus of a
+				tetrachord/scale will sound virtually the same to the human ear.
+			</p>
+		</div>
+		<div id="lichanus-to-mese-rules">
+			<h5>Lichanus to Mese (topmost/rightmost)</h5>
+			<p>
+				Like I just mentioned above, the interval produced by the
+				Lichanus and Mese, or the top (or right, depending on what axis
+				you're using to visualize the tetrachord) most interval in the
+				tetrachord determines its genus. The interval <span
+					class="fw-bold"
+					>must be between 1 and 2 tones (inclusive)</span
+				>. Within that range...
+			</p>
+			<ul>
+				<li>
+					if the interval is less than or equal to 2 tones (400
+					cents), and greater than 1 + 5/6 tones (about 367 cents),
+					then it's <span class="fw-bold">Enharmonic</span>.
+				</li>
+				<li>
+					if the interval is less than or equal to 1 + 5/6 tones, and
+					greater than or equal to 1 + 1/4 tones (about 300 cents),
+					then it's <span class="fw-bold">Chromatic</span>.
+				</li>
+				<li>
+					if the interval is less than or equal to 1 + 1/4 tones, and
+					greater than or equal to 1 tone (200 cents), then it's <span
+						class="fw-bold">Diatonic</span
+					>.
+				</li>
+			</ul>
+			<h5>Why does the math work this way?</h5>
+			<p>
+				As I mentioned earlier, the range of intervals between Lichanus
+				and Mese (the <span class="fst-italic">rightmost</span>) is
+				confined to 1 and 2 tones. If we take a tetrachord from each of
+				the genera that contains the smallest possible intervals between
+				Hypate, Parhypate, and Lichanus (the three
+				<span class="fst-italic">leftmost</span>), we can figure out why
+				the ranges are the way they are.
+			</p>
+			<p>
+				An Enharmonic tetrachord with the smallest leftmost intervals
+				would consist of a series of 2 1/4 tones (50 cents each),
+				resulting in a semi tone (100 cents). That would make the
+				interval between Lichanus and Mese 2 tones (400 cents).
+			</p>
+			<p>
+				If we do the same with a Chromatic tetrachord with the smallest
+				leftmost intervals: 2 1/3 tones (about 67 cents each), we would
+				be left with an interval between Lichanus and Mese that's 1 +
+				5/6 tones (about 367 cents). 5/6 looks like an odd fraction, but
+				I find that breaking down the cents into smaller values and
+				turning them into fractions helps me understand the math better.
+			</p>
+			<ul>
+				<li>1 + 5/6 tones is about 367 cents</li>
+				<li>
+					367 cents can be expressed as 200 cents + 100 cents + 67
+					cents
+				</li>
+				<li>200 cents is 1 tone</li>
+				<li>100 cents is 1/2 tone</li>
+				<li>67 cents is about 1/3 tone</li>
+				<li>1 + 1/2 (or 3/6) + 1/3 (or 2/6) is 1 + 5/6</li>
+			</ul>
+			<p>
+				Therefore, if the smallest Enharmonic tetrachord has a rightmost
+				interval of 2 tones (400 cents), and the smallest Chromatic
+				tetrachord has a rightmost interval of 1 + 5/6 tones (367
+				cents), then all rightmost intervals between 1 + 5/6 and 2 tones
+				(bottom exclusive, top inclusive) must be Enharmonic.
+			</p>
+			<p>
+				Using a similar line of logic, if we take a Diatonic tetrachord
+				that Aristoxenus' implies has the "smallest" leftmost intervals:
+				1/2 tone (100 cents) and 3/4 tone (150 cents), we can see that
+				the rightmost interval is 1 + 1/4 tones (250 cents). That means
+				that all tetrachords whose rightmost interval falls within the
+				range of 1 + 1/4 and 1 + 5/6 tones (bottom inclusive, top
+				exclusive) must be Chromatic.
+			</p>
+			<p>
+				And lastly, figuring out the range of Diatonic tetrachords is
+				straightforward because we've already figured out the "smallest"
+				leftmost intervals, which would result in a rightmost interval
+				of 1 + 1/4 tones (250 cents). We also know that the rightmost
+				interval can't be smaller than a tone (200 cents), so the range
+				of Diatonic tetrachords is between 1 tone (200 cents) and 1 +
+				1/4 tones (250).
+			</p>
+		</div>
+		<div id="hypate-to-parhypate-rules">
+			<h5>Hypate to Parhypate (bottommost/leftmost/Diesis)</h5>
+			<p>
+				The diesis of a tetrachord, like I mentioned earlier, is the
+				pitch collection's smallest interval. It's between Hypate and
+				Parhypate, and the same way we calculated ranges for the
+				rightmost interval which determines the genus, we can do the
+				same to describe the tetrachord's diesis.Just a reminder from
+				earlier
+			</p>
+			<ul>
+				<li>The smallest Enharmonic diesis is 1/4 tone (50 cents)</li>
+				<li>
+					The smallest Chromatic diesis is 1/3 tone (about 67 cents)
+				</li>
+				<li>
+					and the largest Chromatic/only Diatonic diesis is 1/2 tone
+					(100 cents)
+				</li>
+			</ul>
+			<p>
+				Because the Chromatic and Diatonic genera share a diesis, it's
+				unclear whether calling a diesis of 1/2 tone a "Largest
+				Chromatic diesis" or a "Diatonic diesis" is the intended way to
+				go about it.
+			</p>
+			<p>So, knowing our smallest dieses, we can determine that...</p>
+			<ul>
+				<li>
+					An Enharmonic diesis is between 1/4 (50 cents) and 1/3
+					(about 67 cents) tone (bottom inclusive, top exclusive).
+				</li>
+				<li>
+					A Chromatic diesis is between 1/3 (about 67 cents) and 1/2
+					(100 cents) tone (both inclusive).
+				</li>
+				<li>
+					And, technically, a Diatonic diesis is always 1/2 tone, but
+					it's unclear as to whether or not this is a "Diatonic
+					diesis" at all, since it's shared with the top of the
+					Chromatic range.
+				</li>
+			</ul>
+		</div>
+		<div id="putting-it-together"></div>
+	</div>
 </div>
