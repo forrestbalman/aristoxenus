@@ -3,7 +3,10 @@
 </script>
 
 <div class="intro-bio">
-	<h3>A brief intro to Aristoxenus</h3>
+	<h3>
+		A brief intro to Aristoxenus, and <span class="fst-italic"
+			>Elementa Harmonica</span>
+	</h3>
 	<p>
 		Aristoxenus of Tarentum was one of the foremost philosophers of his
 		time. Although he authored upwards of 453 books during his lifetime
@@ -14,20 +17,23 @@
 		have to music from Greek antiquity.
 	</p>
 	<p>
-		In comparison to Greek theorists that preceded him, Aristoxenus wrote
-		about theory from a "practicality-first" perspective. By no means does
-		he entirely do away with the mathematical principles that informed his
+		Over the span of the three books that make up the treatise, in
+		comparison to Greek theorists that preceded him, Aristoxenus wrote about
+		theory from a "practicality-first" perspective. By no means does he
+		entirely do away with the mathematical principles that informed his
 		practice; however, there seems to be a stronger emphasis on whether or
 		not any theoretical pitch material is pragmatic to the practicing
 		musician.
 	</p>
 </div>
 <div id="intro-theory">
-	<h3>An intro to Aristoxenus' theory of tetrachords</h3>
+	<h3>My attempt to introduce Aristoxenus' theories</h3>
 	<div id="excerpt">
 		<p>
-			This generator/calculator is inspired by a particular section from <span
-				class="fst-italic">Elementa Harmonica</span>
+			Because this webpage is dedicated to the entire treatise, I want to
+			start off by saying that this generator/calculator is inspired by a
+			particular section from <span class="fst-italic"
+				>Elementa Harmonica</span>
 			where Aristoxenus describes the
 			<button
 				type="button"
@@ -42,7 +48,99 @@
 			core vocabulary that Aristoxenus assumes the reader knows. The rest
 			of this article is going to attempt to explain some of what I think
 			are the biggest takeaways from this section. But first, let's cover
-			some key terms as they are referenced in and around the exceprt.
+			some key terms as they are referenced in and around the excerpt.
+		</p>
+		<p>
+			Another important tidbit is that I'm using a particular translation
+			of the treatise, <span class="fst-italic"
+				>The Harmonics of Aristoxenus</span> authored by Henry S. Macran.
+			I'll be including page numbers, which are specific to this book. It has
+			detailed notation and a hefty notes section that explains a lot of what
+			I'm going to attempt to explain here.
+		</p>
+		<p>
+			As far as the structure of the rest of the webpage is concerned, I'm
+			going to include quotes from the translation that I found
+			particularly meaningful to Aristoxenus' overall message, and add
+			some of my own commentary from each of the 3 books.
+		</p>
+	</div>
+	<div id="book-1">
+		<h3>Book 1</h3>
+		<h5>
+			"[The enharmonicists] confin[ed] themselves to what is but the third
+			part of that complete system, they selected for exclusive treatment
+			a single magnitude in that third part, namely the Octave." (166)
+		</h5>
+		<p>
+			If you know about what <span class="fst-italic">enharmonic</span> means
+			in the context of Greek music theory, then there's more to unpack in
+			this quote; however, because Aristoxenus goes into detail about what
+			enharmonic (and the rest of the tetrachord genera) means later on, the
+			main takeaway from this quote is how Aristoxenus throws shade in the
+			direction of his predecessors quite frequently in his treatise. Whether
+			it's because his theories were met with resistance by his contemporaries,
+			or because he genuinely felt the need to criticize the foundations of
+			his musical progenitors, Aristoxenus' writing is full of snarky remarks
+			like this, and through the lens of someone who's excited by juicy drama
+			in historical texts, these can be fun to read in an otherwise ultra-dense,
+			stream of consciousness writing style.
+		</p>
+		<h5>
+			“The truth is that of all the objects to which the five senses apply
+			not one other is characterized by an orderliness so extensive and so
+			perfect.” (168)
+		</h5>
+		<p>
+			This is one of the first hints we get in the book that discusses the
+			idea of sense perception as an important factor in finding
+			significance in music theory. Aristoxenus suggests that the order in
+			which we classify sounds is unique to hearing as a sense, and that
+			instead of relying purely on the mathematical relationships between
+			intervals, we should also account for our tendencies and intuitions
+			when it comes to hearing and producing pitch.
+		</p>
+		<h5>
+			"Every voice is capable of change of position, and this change may
+			be either continuous or by intervals." (170)
+		</h5>
+		<p>
+			Aristoxenus presents a binary of continuous and intervallic vocal
+			delivery. Continuous refers to the "motion of speech" (171), where
+			he's observed that the voice never stays on a single identifiable
+			pitch for a long enough time to perceive it. Intervallic refers to
+			the opposite, where the voice moves between stations that have
+			discernable pitch.
+		</p>
+		<h5>
+			"...tension takes place when the string is in motion, height of
+			pitch when it is stationary." (173)
+		</h5>
+		<p>
+			Here, Aristoxenus discusses 4 qualities of a string in motion (or
+			just vibrating bodies in general I'm assuming, despite him going
+			into detail most about the voice): tension, relaxation, height, and
+			depth. Tension refers to a string's motion from a lower frequency,
+			to a higher frequency, and relaxation is the opposite. Somewhat
+			confusingly, height and depth are used separately to describe the
+			result of tension and relaxation, respectively. Aristoxenus
+			justifies the need for both sets of terms by suggesting that one set
+			of terms is used to describe the motion, and the other set is used
+			to describe the result of the motion.
+		</p>
+		<h5>
+			"What the voice cannot produce and the ear cannot discriminate must
+			be excluded from the available and practically possible range of
+			musical sound." (175)
+		</h5>
+		<p>
+			In this quote, Aristoxenus is plainly suggesting that intervals that
+			aren't practical to produce, nor readily discernable by ear,
+			shouldn't be focused on theoretically. In this section, he
+			introduces the terms <span class="fst-italic">in parvitatem</span>
+			and <span class="fst-italic">in magnitudinem</span> to describe 2 types
+			of interval relationships, the former being too small to sing/hear accurately,
+			and the latter being large enough to sing/hear.
 		</p>
 	</div>
 	<div id="tones-divisions-diesis-and-genera">
