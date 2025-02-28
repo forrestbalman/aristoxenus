@@ -1,39 +1,16 @@
 <script>
 	import * as Tone from "tone";
 	import { onMount, onDestroy } from "svelte";
+	import { fraction } from "$lib/fraction.js";
+	import { ratio } from "$lib/ratio.js";
+	import { tetrachord, presets } from "$lib/tetrachord.svelte.js";
 
-	let tetrachord = $state({
-		total: 500,
-		parhypate: {
-			storage: 50,
-			value: 50,
-		},
-		lichanus: {
-			storage: 100,
-			value: 100,
-		},
-		title: {
-			diesis: "Enharmonic",
-			genus: "Enharmonic",
-			pycnum: true,
-			value: null,
-			unmelodic: false,
-		},
-		frequencies: {
-			hypate: 440,
-			parhypate: 440 * Math.pow(2, 50 / 1200),
-			lichanus: 440 * Math.pow(2, 100 / 1200),
-			mese: 440 * Math.pow(2, 500 / 1200),
-		},
-		error: null,
-		unmelodic: false,
-		light: null,
-	});
 	let tickWidth = 2;
 	let textHeight = $state(0);
 	let buttonHeight = $state(0);
 	let errorTimeout;
 	let audio = $state(false);
+	let playing = $state(false);
 	let synth;
 
 	// converts cent value to percentage of total cents in chord
@@ -238,15 +215,15 @@
 			}
 		// chromatic dieses are 1/3 tone to 1/2 tone
 		} else if (
-			tetrachord.parhypate.storage >= 67 &&
+			tetrachord.parhypate.storage >= 66 &&
 			tetrachord.parhypate.storage < 100
 		) {
-			if (tetrachord.parhypate.storage === 67) {
+			if (tetrachord.parhypate.storage === 66) {
 				tetrachord.title.diesis = "Soft Chromatic";
 			} else if (tetrachord.parhypate.storage === 75) {
 				tetrachord.title.diesis = "Hemiolic Chromatic";
 			} else if (
-				tetrachord.parhypate.storage > 67 &&
+				tetrachord.parhypate.storage > 66 &&
 				tetrachord.parhypate.storage < 75
 			) {
 				tetrachord.title.diesis = "Larger than Soft Chromatic";
@@ -288,7 +265,7 @@
 				tetrachord.parhypate.storage === 50 &&
 				tetrachord.lichanus.storage === 100,
 			"Soft Chromatic tetrachord":
-				tetrachord.parhypate.storage === 67 &&
+				tetrachord.parhypate.storage === 66 &&
 				tetrachord.lichanus.storage === 133,
 			"Hemiolic Chromatic tetrachord":
 				tetrachord.parhypate.storage === 75 &&
@@ -302,6 +279,21 @@
 			"Sharp (Intense) Diatonic tetrachord":
 				tetrachord.parhypate.storage === 100 &&
 				tetrachord.lichanus.storage === 300,
+			"Unnamed Chromatic":
+				tetrachord.parhypate.storage === 66 &&
+				tetrachord.lichanus.storage === 200,
+			"Diatonic with Tonic Chromatic Diesis":
+				tetrachord.parhypate.storage === 66 &&
+				tetrachord.lichanus.storage === 300,
+			"Diatonic with Hemiolic Chromatic Diesis":
+				tetrachord.parhypate.storage === 75 &&
+				tetrachord.lichanus.storage === 300,
+			"Rejected Chromatic":
+				tetrachord.parhypate.storage === 100 &&
+				tetrachord.lichanus.storage === 150,
+			"Unmelodic Chromatic":
+				tetrachord.parhypate.storage === 75 &&
+				tetrachord.lichanus.storage === 133,
 		};
 
 		Object.keys(fixedCases).forEach((key) => {
@@ -367,83 +359,306 @@
 {/snippet}
 
 <div class="d-flex flex-column my-5">
-	<!-- Tetrachord diagram -->
-	<div
-		class="w-100 d-flex accent-bg position-relative mb-5"
-		style="height: 2px;">
-		{@render tick("hypate", 0)}
-		<div
-			id="interval-hypate-to-parhypate"
-			class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
-			style="width: calc({percent(
-				tetrachord.parhypate.value
-			)}% - {tickWidth}px); left: 0;">
-			<h4 class="m-0" bind:clientHeight={textHeight}>
-				{tetrachord.parhypate.value}
-			</h4>
-		</div>
-		{@render tick("parhypate", percent(tetrachord.parhypate.value))}
-		<div
-			id="interval-parhypate-to-lichanus"
-			class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
-			style="width: calc({percent(tetrachord.lichanus.value) -
-				percent(tetrachord.parhypate.value)}% - {tickWidth *
-				2}px); left: calc({percent(
-				tetrachord.parhypate.value
-			)}% + {tickWidth}px);">
-			<h4 class="m-0">
-				{tetrachord.lichanus.value - tetrachord.parhypate.value}
-			</h4>
-		</div>
-		{@render tick("lichanus", percent(tetrachord.lichanus.value))}
-		<div
-			id="interval-lichanus-to-mese"
-			class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
-			style="width: calc({percent(tetrachord.total) -
-				percent(
-					tetrachord.lichanus.value
-				)}% - {tickWidth}px); left: calc({percent(
-				tetrachord.lichanus.value
-			)}% + {tickWidth}px);">
-			<h4 class="m-0">{tetrachord.total - tetrachord.lichanus.value}</h4>
-		</div>
-		{@render tick("mese", percent(tetrachord.total))}
+	<!-- Instructions -->
+	<div class="mb-3">
+		<h5>How do I use this thing?</h5>
+		<p>
+			Input the two intervals: Hypate to Parhypate, and Hypate to Lichanus
+			(that's scale degrees 1 to 3, not scale degrees 2 to 3), into the
+			fields below, then click <span class="accent-bg px-2 rounded-1"
+				>Recalculate</span>
+			to generate a tetrachord.
+		</p>
+		<p>
+			Because we're working with whole numbers, fractions are approximate.
+			For calculation purposes, numbers like 66 and 67 both represent 1/3
+			of a tone, for example.
+		</p>
 	</div>
 	<!-- Title display -->
-	<h3 class="text-center mb-3">
-		{#if tetrachord.title.unmelodic}
-			This is an unmelodic tetrachord
-		{:else if tetrachord.title.value}
-			This is a{tetrachord.title.value &&
-			(tetrachord.title.value[0].toLowerCase() === "a" ||
-				tetrachord.title.value[0].toLowerCase() === "e" ||
-				tetrachord.title.value[0].toLowerCase() === "i" ||
-				tetrachord.title.value[0].toLowerCase() === "o" ||
-				tetrachord.title.value[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.value}
-		{:else}
-			This is a{tetrachord.title.genus &&
-			(tetrachord.title.genus[0].toLowerCase() === "a" ||
-				tetrachord.title.genus[0].toLowerCase() === "e" ||
-				tetrachord.title.genus[0].toLowerCase() === "i" ||
-				tetrachord.title.genus[0].toLowerCase() === "o" ||
-				tetrachord.title.genus[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.genus} tetrachord with a{tetrachord.title
-				.diesis &&
-			(tetrachord.title.diesis[0].toLowerCase() === "a" ||
-				tetrachord.title.diesis[0].toLowerCase() === "e" ||
-				tetrachord.title.diesis[0].toLowerCase() === "i" ||
-				tetrachord.title.diesis[0].toLowerCase() === "o" ||
-				tetrachord.title.diesis[0].toLowerCase() === "u")
-				? "n"
-				: ""}
-			{tetrachord.title.diesis} diesis
-		{/if}
-	</h3>
+	<div class="mb-4">
+		<h3 class="text-center m-0">
+			{#if tetrachord.title.unmelodic}
+				This is an unmelodic tetrachord
+			{:else if tetrachord.title.value}
+				This is a{tetrachord.title.value &&
+				(tetrachord.title.value[0].toLowerCase() === "a" ||
+					tetrachord.title.value[0].toLowerCase() === "e" ||
+					tetrachord.title.value[0].toLowerCase() === "i" ||
+					tetrachord.title.value[0].toLowerCase() === "o" ||
+					tetrachord.title.value[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.value}
+			{:else}
+				This is a{tetrachord.title.genus &&
+				(tetrachord.title.genus[0].toLowerCase() === "a" ||
+					tetrachord.title.genus[0].toLowerCase() === "e" ||
+					tetrachord.title.genus[0].toLowerCase() === "i" ||
+					tetrachord.title.genus[0].toLowerCase() === "o" ||
+					tetrachord.title.genus[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.genus} tetrachord with a{tetrachord.title
+					.diesis &&
+				(tetrachord.title.diesis[0].toLowerCase() === "a" ||
+					tetrachord.title.diesis[0].toLowerCase() === "e" ||
+					tetrachord.title.diesis[0].toLowerCase() === "i" ||
+					tetrachord.title.diesis[0].toLowerCase() === "o" ||
+					tetrachord.title.diesis[0].toLowerCase() === "u")
+					? "n"
+					: ""}
+				{tetrachord.title.diesis} diesis
+			{/if}
+		</h3>
+	</div>
+	<!-- Diagrams -->
+	<div class="mb-3">
+		<!-- All 3 inner intervals -->
+		<div>
+			<!-- Ratios -->
+			<div class="d-md-flex d-none">
+				<div
+					id="ratio-hypate-to-parhypate"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: calc({percent(
+						tetrachord.parhypate.value
+					)}% + {tickWidth * 2}px);">
+					<p class="m-0">{ratio(tetrachord.parhypate.value)}</p>
+				</div>
+				<div
+					id="ratio-parhypate-to-lichanus"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(tetrachord.lichanus.value) -
+						percent(tetrachord.parhypate.value)}%;">
+					<p class="m-0">
+						{ratio(
+							tetrachord.lichanus.value -
+								tetrachord.parhypate.value
+						)}
+					</p>
+				</div>
+				<div
+					id="ratio-lichanus-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: calc({percent(tetrachord.total) -
+						percent(tetrachord.lichanus.value)}% + {tickWidth *
+						4}px);">
+					<p class="m-0">
+						{ratio(tetrachord.total - tetrachord.lichanus.value)}
+					</p>
+				</div>
+			</div>
+			<!-- Fractions -->
+			<div class="d-md-flex d-none mb-3">
+				<div
+					id="fraction-hypate-to-parhypate"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: calc({percent(
+						tetrachord.parhypate.value
+					)}% + {tickWidth * 2}px);">
+					<p class="m-0">{fraction(tetrachord.parhypate.value)}</p>
+				</div>
+				<div
+					id="fraction-parhypate-to-lichanus"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(tetrachord.lichanus.value) -
+						percent(tetrachord.parhypate.value)}%;">
+					<p class="m-0">
+						{fraction(
+							tetrachord.lichanus.value -
+								tetrachord.parhypate.value
+						)}
+					</p>
+				</div>
+				<div
+					id="fraction-lichanus-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: calc({percent(tetrachord.total) -
+						percent(tetrachord.lichanus.value)}% + {tickWidth *
+						4}px);">
+					<p class="m-0">
+						{fraction(tetrachord.total - tetrachord.lichanus.value)}
+					</p>
+				</div>
+			</div>
+			<!-- Diagram -->
+			<div
+				class="d-flex accent-bg position-relative"
+				style="height: 2px; margin-bottom: {buttonHeight / 2}px;">
+				{@render tick("hypate", 0)}
+				<div
+					id="interval-hypate-to-parhypate"
+					class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
+					style="width: calc({percent(
+						tetrachord.parhypate.value
+					)}% - {tickWidth}px); left: 0;">
+					<h4 class="m-0" bind:clientHeight={textHeight}>
+						{tetrachord.parhypate.value}
+					</h4>
+				</div>
+				{@render tick("parhypate", percent(tetrachord.parhypate.value))}
+				<div
+					id="interval-parhypate-to-lichanus"
+					class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
+					style="width: calc({percent(tetrachord.lichanus.value) -
+						percent(tetrachord.parhypate.value)}% - {tickWidth *
+						2}px); left: calc({percent(
+						tetrachord.parhypate.value
+					)}% + {tickWidth}px);">
+					<h4 class="m-0">
+						{tetrachord.lichanus.value - tetrachord.parhypate.value}
+					</h4>
+				</div>
+				{@render tick("lichanus", percent(tetrachord.lichanus.value))}
+				<div
+					id="interval-lichanus-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none h-100 position-absolute"
+					style="width: calc({percent(tetrachord.total) -
+						percent(
+							tetrachord.lichanus.value
+						)}% - {tickWidth}px); left: calc({percent(
+						tetrachord.lichanus.value
+					)}% + {tickWidth}px);">
+					<h4 class="m-0">
+						{tetrachord.total - tetrachord.lichanus.value}
+					</h4>
+				</div>
+				{@render tick("mese", percent(tetrachord.total))}
+			</div>
+		</div>
+		<!-- Hypate to Lichanus -->
+		<div>
+			<!-- Ratios -->
+			<div class="d-md-flex d-none">
+				<div
+					id="ratio-hypate-to-lichanus"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(tetrachord.lichanus.value)}%;">
+					<p class="m-0">{ratio(tetrachord.lichanus.value)}</p>
+				</div>
+			</div>
+			<!-- Fractions -->
+			<div class="d-md-flex d-none mb-3">
+				<div
+					id="fraction-hypate-to-lichanus"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: calc({percent(
+						tetrachord.lichanus.value
+					)}% + {tickWidth * 2}px);">
+					<p class="m-0">{fraction(tetrachord.lichanus.value)}</p>
+				</div>
+			</div>
+			<!-- Diagram -->
+			<div
+				class="d-flex accent-bg position-relative"
+				style="width: {percent(
+					tetrachord.lichanus.value
+				)}%; height: 2px; margin-bottom: {buttonHeight / 2}px;">
+				{@render tick("hypate-to-lichanus-hypate", 0)}
+				<div
+					id="interval-hypate-to-parhypate"
+					class="d-flex justify-content-center align-items-center user-select-none w-100 h-100 position-absolute">
+					<h4 class="m-0" bind:clientHeight={textHeight}>
+						{tetrachord.lichanus.value}
+					</h4>
+				</div>
+				{@render tick("hypate-to-lichanus-lichanus", 100)}
+			</div>
+		</div>
+		<!-- Parhypate to Mese -->
+		<div>
+			<!-- Ratios -->
+			<div class="d-md-flex d-none justify-content-end">
+				<div
+					id="ratio-parhypate-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(
+						tetrachord.total - tetrachord.parhypate.value
+					)}%;">
+					<p class="m-0">
+						{ratio(tetrachord.total - tetrachord.parhypate.value)}
+					</p>
+				</div>
+			</div>
+			<!-- Fractions -->
+			<div class="d-md-flex d-none justify-content-end mb-3">
+				<div
+					id="fraction-parhypate-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(
+						tetrachord.total - tetrachord.parhypate.value
+					)}%;">
+					<p class="m-0">
+						{fraction(
+							tetrachord.total - tetrachord.parhypate.value
+						)}
+					</p>
+				</div>
+			</div>
+			<!-- Diagram -->
+			<div class="d-flex justify-content-end">
+				<div
+					class="d-flex accent-bg position-relative"
+					style="width: {percent(
+						tetrachord.total - tetrachord.parhypate.value
+					)}%; height: 2px; margin-bottom: {buttonHeight / 2}px;">
+					{@render tick("parhypate-to-mese-parhypate", 0)}
+					<div
+						id="interval-hypate-to-parhypate"
+						class="d-flex justify-content-center align-items-center user-select-none w-100 h-100 position-absolute">
+						<h4 class="m-0" bind:clientHeight={textHeight}>
+							{tetrachord.total - tetrachord.parhypate.value}
+						</h4>
+					</div>
+					{@render tick("parhypate-to-mese-mese", 100)}
+				</div>
+			</div>
+		</div>
+		<!-- Hypate to Mese -->
+		<div>
+			<!-- Ratios -->
+			<div class="d-md-flex d-none justify-content-center">
+				<div
+					id="ratio-hypate-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(tetrachord.total)}%;">
+					<p class="m-0">
+						{ratio(tetrachord.total)}
+					</p>
+				</div>
+			</div>
+			<!-- Fractions -->
+			<div class="d-md-flex d-none justify-content-end mb-3">
+				<div
+					id="fraction-hypate-to-mese"
+					class="d-flex justify-content-center align-items-center user-select-none"
+					style="width: {percent(tetrachord.total)}%;">
+					<p class="m-0">
+						{fraction(tetrachord.total)}
+					</p>
+				</div>
+			</div>
+			<!-- Diagram -->
+			<div class="d-flex justify-content-end">
+				<div
+					class="d-flex accent-bg position-relative"
+					style="width: {percent(
+						tetrachord.total
+					)}%; height: 2px; margin-bottom: {buttonHeight / 2}px;">
+					{@render tick("hypate-to-mese-hypate", 0)}
+					<div
+						id="interval-hypate-to-parhypate"
+						class="d-flex justify-content-center align-items-center user-select-none w-100 h-100 position-absolute">
+						<h4 class="m-0" bind:clientHeight={textHeight}>
+							{tetrachord.total}
+						</h4>
+					</div>
+					{@render tick("hypate-to-mese-mese", 100)}
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Breakdown -->
 	<div class="overflow-y-auto mb-3" style="max-height: 200px;">
 		{#if tetrachord.title.unmelodic}
@@ -516,9 +731,15 @@
 			</p>
 		{/if}
 	</div>
+	<!-- Error -->
+	<div style="min-height: {buttonHeight}px;">
+		{#if tetrachord.error}
+			<p class="accent-text text-center m-0">{tetrachord.error}</p>
+		{/if}
+	</div>
 	<!-- Form input -->
 	<div
-		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-3">
+		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-5">
 		<div>
 			<label for="parhypate">Hypate to Parhypate (in cents)</label>
 			<input
@@ -545,18 +766,36 @@
 		</button>
 		<button
 			type="button"
-			class="bg-success text-light border-0 rounded-2 px-3"
+			class="accent-bg text-light border-0 rounded-2 px-3"
 			style="height: {buttonHeight}px;"
 			onclick={play}
-			aria-label="Play">
-			<i class="bi bi-play-fill"></i>
+			aria-label={playing ? "Stop" : "Play"}>
+			{#if playing}
+				<i class="bi bi-stop-fill"></i>
+			{:else}
+				<i class="bi bi-play-fill"></i>
+			{/if}
 		</button>
 	</div>
-	<!-- Error -->
-	<div style="min-height: {buttonHeight}px;">
-		{#if tetrachord.error}
-			<p class="accent-text text-center m-0">{tetrachord.error}</p>
-		{/if}
+	<!-- Presets -->
+	<div>
+		<div>
+			<h4 class="mb-3">
+				Click a button to generate one of the tetrachords Aristoxenus
+				explicitly mentions in <span class="fst-italic"
+					>Elementa Harmonica</span>
+			</h4>
+		</div>
+		<div class="d-flex justify-content-center flex-wrap gap-2">
+			{#each Object.entries(presets) as [name, values]}
+				<button
+					type="button"
+					class="accent-bg text-light border-0 rounded-2 px-3"
+					onclick={() => preset(values[0], values[1])}>
+					{name}
+				</button>
+			{/each}
+		</div>
 	</div>
 </div>
 
