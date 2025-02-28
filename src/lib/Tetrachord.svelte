@@ -36,32 +36,43 @@
 	let audio = $state(false);
 	let synth;
 
+	// converts cent value to percentage of total cents in chord
+	// for use in calculating widths for the tetrachord diagram
 	function percent(value) {
 		return (value / tetrachord.total) * 100;
 	}
 
+	// resets the storage values to the current values
+	// this is used to prevent the user from inputting invalid values
 	function resetStorage() {
 		tetrachord.parhypate.storage = tetrachord.parhypate.value;
 		tetrachord.lichanus.storage = tetrachord.lichanus.value;
 	}
 
+	// sets the storage values to the current values
+	// when the user inputs valid values
 	function setValueToStorage() {
 		tetrachord.parhypate.value = tetrachord.parhypate.storage;
 		tetrachord.lichanus.value = tetrachord.lichanus.storage;
 	}
 
+	// generates an error message when input is invalid
 	function makeError(message) {
 		tetrachord.error = message;
 
+		// removes current error if it exists
 		if (errorTimeout) {
 			clearTimeout(errorTimeout);
 		}
 
+		// removes the error after 5 seconds
 		errorTimeout = setTimeout(() => {
 			tetrachord.error = null;
 		}, 5000);
 	}
 
+	// generates frequencies from cent values in relation to 440Hz
+	// formula = baseFrequency * 2^(cents/1200)
 	function makeFrequencies() {
 		tetrachord.frequencies.parhypate =
 			tetrachord.frequencies.hypate *
@@ -74,16 +85,23 @@
 			Math.pow(2, tetrachord.total / 1200);
 	}
 
+	// stops any currently scheduled sounds and removes any lit up tick marks
 	function clearChord() {
 		tetrachord.light = null;
 		Tone.getTransport().stop();
 		Tone.getTransport().cancel();
 	}
 
+	// for tetrachord playback
 	function playChord() {
-		Tone.getTransport().stop();
-		Tone.getTransport().cancel();
+		// clear any currently scheduled sounds and removes any lit up tick marks
+		clearChord()
 
+		// Tone.getTransport().scheduleOnce() uses the sound library to schedule multiple events at specific times
+		// set the light value to the tick mark that's associated with the current scale degree
+		// trigger a sound at the frequency of the current scale degree
+		// aesthetically, I've set the volume of each note to decrease as the scale ascends to represent the weaker fingers plucking the harp
+		// sounds are 0.75 seconds apart ascending and descending with a 1 second gap between the two series
 		Tone.getTransport().scheduleOnce((time) => {
 			tetrachord.light = "hypate";
 			synth.triggerAttack(tetrachord.frequencies.hypate, time, 1);
@@ -132,23 +150,27 @@
 			tetrachord.light = null;
 		}, 7.5);
 
+		// start the transport to play all the scheduled sounds
 		Tone.getTransport().start();
 	}
 
+	// checks to see if certain inputs are invalid
 	function errorChecking() {
-		// error checking
+		// if hypate to parhypate is less than 50 cents (smallest harmonious interval)
 		if (tetrachord.parhypate.storage < 50) {
 			makeError("Parhypate must be at least 50 cents");
 			resetStorage();
 			return;
 		}
 
+		// if hypate to parhypate is greater than 100 cents (largest possible interval here according to Aristoxenus)
 		if (tetrachord.parhypate.storage > 100) {
 			makeError("Parhypate must be at most 100 cents");
 			resetStorage();
 			return;
 		}
 
+		// if parhypate to lichanus is less than 50 cents (smallest harmonious interval)
 		if (tetrachord.lichanus.storage - tetrachord.parhypate.storage < 50) {
 			makeError(
 				"The interval from Parhypate to Lichanus must be at least 50 cents"
@@ -157,12 +179,14 @@
 			return;
 		}
 
+		// if parhypate to lichanus is greater than 300 cents (wouldn't allow for a tone between Lichanus and Mese)
 		if (tetrachord.lichanus.storage > 300) {
 			makeError("Lichanus must be at most 300 cents");
 			resetStorage();
 			return;
 		}
 
+		// if parhypate to lichanus is less than 100 cents (the sum of two smallest harmonious intervals)
 		if (tetrachord.lichanus.storage < 100) {
 			makeError("Lichanus must be at least 100 cents");
 			resetStorage();
@@ -170,6 +194,8 @@
 		}
 	}
 
+	// for clearing up the current title
+	// just for display purposes
 	function resetTitle() {
 		tetrachord.title = {
 			diesis: "",
@@ -180,14 +206,9 @@
 		};
 	}
 
+	// determines if a tetrachord is unmelodic
 	function unmelodic() {
-		if (
-			tetrachord.parhypate.storage >
-			tetrachord.lichanus.storage - tetrachord.parhypate.storage
-		) {
-			tetrachord.title.unmelodic = true;
-		}
-
+		// if the interval from Hypate to Parhypate is greater than the interval from Parhypate to Lichanus
 		if (
 			tetrachord.lichanus.storage - tetrachord.parhypate.storage <
 			tetrachord.parhypate.storage
@@ -195,22 +216,27 @@
 			tetrachord.title.unmelodic = true;
 		}
 
+		// if the interval from Lichanus to Mese is less than 1 tone
 		if (tetrachord.total - tetrachord.lichanus.storage < 200) {
 			tetrachord.title.unmelodic = true;
 		}
 
+		// if the interval from Lichanus to Mese is greater than 2 tones
 		if (tetrachord.total - tetrachord.lichanus.storage > 400) {
 			tetrachord.title.unmelodic = true;
 		}
 	}
 
+	// for determining diesis
 	function diesis() {
+		// enharmonic dieses are 1/4 to less than 1/3 tone
 		if (tetrachord.parhypate.storage < 67) {
 			if (tetrachord.parhypate.storage === 50) {
 				tetrachord.title.diesis = "Enharmonic";
 			} else {
 				tetrachord.title.diesis = "Larger Enharmonic";
 			}
+		// chromatic dieses are 1/3 tone to 1/2 tone
 		} else if (
 			tetrachord.parhypate.storage >= 67 &&
 			tetrachord.parhypate.storage < 100
@@ -230,22 +256,32 @@
 			) {
 				tetrachord.title.diesis = "Larger than Hemiolic Chromatic";
 			}
+		// chromatic and diatonic genera share a potential diesis
 		} else {
 			tetrachord.title.diesis = "Largest Chromatic (or Diatonic)";
 		}
 	}
 
+	// for determining genus
 	function genus() {
+		// genus can be defined by interval between Lichanus and Mese
 		const genus = tetrachord.total - tetrachord.lichanus.storage;
+
+		// enharmonic genus is 1 + 5/6 to 2 tones
 		if (genus > 367) {
 			tetrachord.title.genus = "Enharmonic";
+		// chromatic genus is 1 + 5/6 to 1 + 1/4 tones
 		} else if (genus <= 367 && genus > 250) {
 			tetrachord.title.genus = "Chromatic";
+		// diatonic genus is 1 + 1/4 to 1 tone
 		} else if (genus <= 250) {
 			tetrachord.title.genus = "Diatonic";
 		}
 	}
 
+	// named cases for special tetrachords
+	// sets a special title for unique cases
+	// I forgot "Tonic Chromatic", I will add later
 	function specialTitle() {
 		const fixedCases = {
 			"Enharmonic tetrachord":
@@ -275,6 +311,7 @@
 		});
 	}
 
+	// executes functions in order after button is pressed
 	function recalculate() {
 		clearChord();
 
@@ -295,6 +332,7 @@
 		makeFrequencies();
 	}
 
+	// for handling audio playback
 	async function play() {
 		if (!audio) {
 			await Tone.start();
