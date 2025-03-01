@@ -1,6 +1,7 @@
 <script>
 	import * as Tone from "tone";
 	import { onMount, onDestroy } from "svelte";
+	import { base } from "$app/paths";
 	import { fraction } from "$lib/fraction.js";
 	import { ratio } from "$lib/ratio.js";
 	import { tetrachord, presets } from "$lib/tetrachord.svelte.js";
