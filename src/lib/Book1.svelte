@@ -1,4 +1,5 @@
 <script>
+	import { base } from "$app/paths";
 	let { value = $bindable() } = $props();
 </script>
 
@@ -434,7 +435,7 @@
 		<h3>Differences of the genera (180)</h3>
 		<p>
 			The next section is what originally inspired the calculator at the
-			top of the page. <a href="/differences-of-the-genera"
+			top of the page. <a href="{base}/differences-of-the-genera"
 				>click here to read the translation.</a> It'll be formatted similarly
 			to the rest of the webpage (quotes from the translation, followed by
 			my own comments), but this section is going to contain quotes that are

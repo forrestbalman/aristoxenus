@@ -1,3 +1,7 @@
+<script>
+	import { base } from "$app/paths";
+</script>
+
 <div class="intro-bio mb-4 clearfix">
 	<img
 		class="d-none d-md-block col-md-6 float-md-end mb-3 ms-md-3"
@@ -41,7 +45,7 @@
 		start off by saying that the original inspiration is a particular
 		section from <span class="fst-italic">Elementa Harmonica</span>
 		where Aristoxenus describes the
-		<a class="accent-text" href="/differences-of-the-genera"
+		<a class="accent-text" href="{base}/differences-of-the-genera"
 			>differences of the genera differences of the genera
 		</a>. If you have no previous experience with Greek music theory (like
 		me before reading), you might find the writing to be challenging to

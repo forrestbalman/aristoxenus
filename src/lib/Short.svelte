@@ -1,10 +1,13 @@
 <script>
+	import { base } from "$app/paths";
 	let { value = $bindable() } = $props();
 </script>
 
 <h3>Here's the essentials</h3>
 <p>
-	In his chapter on <a class="accent-text" href="/differences-of-the-genera">
+	In his chapter on <a
+		class="accent-text"
+		href="{base}/differences-of-the-genera">
 		differences of the genera (click me to read the complete section)
 	</a>
 	in the <span class="fst-italic">Elementa Harmonica</span>, Artistoxenus
