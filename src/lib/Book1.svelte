@@ -1,10 +1,22 @@
 <script>
 	import { base } from "$app/paths";
-	let { value = $bindable() } = $props();
+	import ColorCode from "$lib/ColorCode.svelte";
 </script>
 
 <div id="book-1">
-	<h1>Book 1</h1>
+	<!-- Intro/Color Code -->
+	<div>
+		<h1>Book 1</h1>
+		<div class="d-flex gap-2 flex-wrap justify-content-center">
+			<ColorCode color="#bb8fce" text="Snarky remark" />
+			<ColorCode color="#85c1e9" text="Ear first, math later" />
+			<ColorCode color="#f7dc6f" text="About the voice" />
+			<ColorCode color="#e59866" text="Terms and definitions" />
+			<ColorCode color="#82e0aa" text="Rules and guidelines" />
+			<ColorCode color="#d98880" text="Tetrachord construction" />
+		</div>
+	</div>
+	<!-- Summary -->
 	<div>
 		<h5>Summary</h5>
 		<p>
@@ -57,8 +69,9 @@
 			</li>
 		</ol>
 	</div>
+	<!-- Quotes -->
 	<div>
-		<h5>
+		<h5 class="snark-text">
 			"[The enharmonicists] confin[ed] themselves to what is but the third
 			part of that complete system, they selected for exclusive treatment
 			a single magnitude in that third part, namely the Octave." (166)
@@ -79,7 +92,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="ear-first-text">
 			“The truth is that of all the objects to which the five senses apply
 			not one other is characterized by an orderliness so extensive and so
 			perfect.” (168)
@@ -95,7 +108,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			"Every voice is capable of change of position, and this change may
 			be either continuous or by intervals." (170)
 		</h5>
@@ -109,25 +122,26 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			"...tension takes place when the string is in motion, height of
 			pitch when it is stationary." (173)
 		</h5>
 		<p>
-			Here, Aristoxenus discusses 4 qualities of a string in motion (or
-			just vibrating bodies in general I'm assuming, despite him going
-			into detail most about the voice): tension, relaxation, height, and
-			depth. Tension refers to a string's motion from a lower frequency,
-			to a higher frequency, and relaxation is the opposite. Somewhat
-			confusingly, height and depth are used separately to describe the
-			result of tension and relaxation, respectively. Aristoxenus
-			justifies the need for both sets of terms by suggesting that one set
-			of terms is used to describe the motion, and the other set is used
-			to describe the result of the motion.
+			Here, Aristoxenus discusses 4 qualities of a string in motion:
+			tension, relaxation, height, and depth. Tension refers to the motion
+			from a lower frequency, to a higher frequency, and relaxation is the
+			opposite. Somewhat confusingly, height and depth are used separately
+			to describe the result of tension and relaxation, respectively.
+			Aristoxenus justifies the need for both sets of terms by suggesting
+			that one set of terms is used to describe the motion, and the other
+			set is used to describe the result of the motion. Even though this
+			quote translates to refer explicitly to a string, I think it's safe
+			to assume that Aristoxenus is using the string as a metaphor for the
+			states that any pitch producing object can be in.
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="ear-first-text">
 			"What the voice cannot produce and the ear cannot discriminate must
 			be excluded from the available and practically possible range of
 			musical sound." (175)
@@ -143,7 +157,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“[A note is] the incidence of the voice upon one point of pitch.
 			Whenever the voice is heard to remain stationary on one pitch, we
 			have a note qualified to take a place in a melody.” (176)
@@ -156,7 +170,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“An interval, on the other hand, is the distance bounded by two
 			notes which have not the same pitch.” (176)
 		</h5>
@@ -167,7 +181,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“A scale, again, is to be regarded as the compound of two or more
 			intervals.” (176)
 		</h5>
@@ -187,7 +201,7 @@
 		</ol>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“Here we would ask our hearers to receive these definitions in the
 			right spirit, not with jealous scrutiny of the degree of their
 			exactness...and to consider our definition which affords an
@@ -205,7 +219,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			"The first classification of intervals distinguishes them by their
 			compass,...concordant or discordant,...simple or
 			compound,...divi[sion] according to the musical genus,...[and]
@@ -269,7 +283,7 @@
 		</ol>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“In scales will be found, with one exception, all the distinctions
 			which we have met in intervals.” (177)
 		</h5>
@@ -318,7 +332,7 @@
 		</ol>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“Any melody we take that is harmonized on one principle is diatonic
 			or chromatic or enharmonic...the diatonic must be granted to be the
 			first and oldest, inasmuch as mankind lights upon it before the
@@ -360,7 +374,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“The nature of melody in the abstract determines which concord has
 			the least compass. Though many smaller intervals than the Fourth
 			occur in melody, they are without exception discords...we find no
@@ -388,7 +402,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			"A tone is the difference in compass between the first two
 			concords...may be divided by the three lowest denominators, as
 			melody admits of half tones, thirds of tones, and quarter-tones,
@@ -444,7 +458,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			"...the smallest of the concords, that of which the compass is
 			usually occupied by four notes.” (180)
 		</h5>
@@ -459,7 +473,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“An example of the order required will be found in the interval
 			between the Mese and the Hypate…Further, while there are several
 			groups of notes which fill this scheme of the Fourth…there is one
@@ -473,7 +487,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“The locus of the variation of the Lichanus is a tone, for this note
 			is never nearer the Mese than the interval of a tone, and never
 			further from it than the interval of two tones. The lesser of these
@@ -498,7 +512,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="snark-text">
 			“...the fact that time and attention are mostly devoted to chromatic
 			music…that when the enharmonic is introduced, it is approximated to
 			the chromatic, while the ethical character of the music suffers…”
@@ -524,7 +538,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“...the locus of the Lichanus to be a tone, and that of the
 			Parhypate to be the smallest diesis...” (181)
 		</h5>
@@ -553,7 +567,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			"...as the [Parhypate] is never nearer to the Hypate than a diesis,
 			and never further from it than a semitone." (181-182)
 		</h5>
@@ -565,7 +579,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="terms-text">
 			“[The] Pycnum [is] two intervals, the sum of which is less than the
 			complement that makes up the Fourth.” (182)
 		</h5>
@@ -581,7 +595,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“...starting from the lower of the two fixed notes, take the least
 			Pycnum...the two least enharmonic diesis...while a second
 			Pycnum…will consist of two of the least chromatic diesis. This gives
@@ -614,7 +628,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“Again, let a third Pycnum be taken, still from the same note; then
 			a fourth, which is equal to a tone; then fifthly, from the same
 			note… a tone and a quarter, then a sixth scale… a tone and a half.”
@@ -663,7 +677,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="ear-first-text">
 			“Continuity in melody seems in its nature to correspond to that
 			continuity in speech which is observable in the collocation of the
 			letters. This is done in no random order: rather, the growth of the
@@ -679,7 +693,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="snark-text">
 			“...we must avoid the example set by the Haromnists in their
 			condensed diagrams, where they mark as consecutive notes those that
 			are separated from one another by the smallest interval. For so far
@@ -698,7 +712,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			"If ascending after two dieses, [the voice] can produce nothing less
 			than the complement of the Fourth, and that is either eight times
 			the smallest dieses, or falls short of it only by a minute and
@@ -716,7 +730,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“...any note in that series will either form with the fourth from it
 			in order the concord of the Fourth, or with the fifth from it in
 			order the concord of the Fifth, while possibly forming both.” (186)
@@ -732,7 +746,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“...there are four intervals contained in the interval of the Fifth,
 			two of which are usually equal, viz. those constituting the Pycnum,
 			and two unequal--on the complement of the first concord, the other
@@ -765,3 +779,29 @@
 		</p>
 	</div>
 </div>
+
+<style>
+	.snark-text {
+		color: #bb8fce;
+	}
+
+	.ear-first-text {
+		color: #85c1e9;
+	}
+
+	.voice-text {
+		color: #f7dc6f;
+	}
+
+	.terms-text {
+		color: #e59866;
+	}
+
+	.rules-text {
+		color: #82e0aa;
+	}
+
+	.tetrachord-text {
+		color: #d98880;
+	}
+</style>

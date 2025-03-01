@@ -8,7 +8,7 @@
 	In his chapter on <a
 		class="accent-text"
 		href="{base}/differences-of-the-genera">
-		differences of the genera (click me to read the complete section)
+		differences of the genera
 	</a>
 	in the <span class="fst-italic">Elementa Harmonica</span>, Artistoxenus
 	summarizes his approach to classifying tetrachords (four note pitch
@@ -23,6 +23,15 @@
 	<li>Lichanus</li>
 	<li>Mese</li>
 </ol>
+<p>
+	You'll notice that sometimes, resources on Greek tetrachord theory will
+	spell the chords in descending pitch order, as opposed to ascending pitch
+	order (which is what I do). I chose to spell the tetrachords in ascending
+	pitch order because it's a bit more intuitive to me (since I have a
+	background in Western music theory and we typically spell chords from the
+	bass upwards), and although there's an argument against the authenticity of
+	doing it this way, the tetrachords themselves are the same.
+</p>
 <h5>Guidelines for tetrachord structure</h5>
 <ol>
 	<li>
@@ -63,9 +72,15 @@
 </ul>
 <p>
 	However, even though Aristoxenus provided these 6 examples, he also suggests
-	that, "Lichani are infinite in number." This implies that you could
-	subdivide the distance between Hypate and Mese with whichever intervals you
-	want, so long as the above guidelines are followed.
+	that, "Lichani are infinite in number." I used to think that this implied
+	that you could place both Lichanus and Parhypate anywhere, so long as the
+	above guidelines were met. However, I think there might be some nuance to
+	Aristoxenus' exclusion of Parhypate in this quote. Perhaps beecause the
+	interval from Hypate to Parhypate is going to be between 1/4 and 1/2 tone,
+	the smallness of the interval lends itself to the divisions explicitly
+	mentioned in the treatise: 1/4, 1/3, 3/8, and 1/2 tones. Regardless, because
+	the calculator is a theoretical tool, all 50 cent divisions from 1/4 to 1/2
+	tone are possible.
 </p>
 <h5>Enharmonic describes...</h5>
 <ol>

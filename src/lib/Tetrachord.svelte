@@ -1,6 +1,7 @@
 <script>
 	import * as Tone from "tone";
 	import { onMount, onDestroy } from "svelte";
+	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
 	import { fraction } from "$lib/fraction.js";
 	import { ratio } from "$lib/ratio.js";
@@ -280,19 +281,19 @@
 			"Sharp (Intense) Diatonic tetrachord":
 				tetrachord.parhypate.storage === 100 &&
 				tetrachord.lichanus.storage === 300,
-			"Unnamed Chromatic":
+			"Unnamed Chromatic tetrachord":
 				tetrachord.parhypate.storage === 66 &&
 				tetrachord.lichanus.storage === 200,
-			"Diatonic with Tonic Chromatic Diesis":
+			"Diatonic tetrachord with Tonic Chromatic Diesis":
 				tetrachord.parhypate.storage === 66 &&
 				tetrachord.lichanus.storage === 300,
-			"Diatonic with Hemiolic Chromatic Diesis":
+			"Diatonic tetrachord with Hemiolic Chromatic Diesis":
 				tetrachord.parhypate.storage === 75 &&
 				tetrachord.lichanus.storage === 300,
-			"Rejected Chromatic":
+			"Rejected Chromatic tetrachord":
 				tetrachord.parhypate.storage === 100 &&
 				tetrachord.lichanus.storage === 150,
-			"Unmelodic Chromatic":
+			"Unmelodic Chromatic tetrachord":
 				tetrachord.parhypate.storage === 75 &&
 				tetrachord.lichanus.storage === 133,
 		};
@@ -312,13 +313,13 @@
 
 		resetTitle();
 
+		specialTitle();
+
 		unmelodic();
 
 		diesis();
 
 		genus();
-
-		specialTitle();
 
 		setValueToStorage();
 
@@ -330,6 +331,8 @@
 		tetrachord.lichanus.storage = presets[name][1];
 
 		recalculate();
+
+		goto(`${base}/tetrachord-calculator/#title`);
 	}
 
 	// for handling audio playback
@@ -369,7 +372,7 @@
 <div class="d-flex flex-column">
 	<!-- Instructions -->
 	<div class="mb-3">
-		<h5>How do I use this thing?</h5>
+		<h5>How do I use this thing 😕?</h5>
 		<p>
 			Input the two intervals: Hypate to Parhypate, and Hypate to Lichanus
 			(that's scale degrees 1 to 3, not scale degrees 2 to 3), into the
@@ -377,16 +380,11 @@
 				>Recalculate</span>
 			to generate a tetrachord.
 		</p>
-		<p>
-			Because we're working with whole numbers, fractions are approximate.
-			For calculation purposes, numbers like 66 and 67 both represent 1/3
-			of a tone, for example.
-		</p>
 	</div>
 	<!-- Title display -->
-	<div class="mb-4">
+	<div id="title" class="mb-4">
 		<h3 class="text-center m-0">
-			{#if tetrachord.title.unmelodic}
+			{#if tetrachord.title.unmelodic && !tetrachord.title.value}
 				This is an unmelodic tetrachord
 			{:else if tetrachord.title.value}
 				This is a{tetrachord.title.value &&
