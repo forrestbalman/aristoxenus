@@ -4,15 +4,6 @@
 
 <div class="background w-100 py-3">
 	<div class="container">
-		<div class="w-100 d-flex justify-content-end">
-			<button
-				type="button"
-				aria-label="Close"
-				class="border-0 background"
-				onclick={() => (value = false)}>
-				<i class="bi bi-x-lg accent-text fs-3"></i>
-			</button>
-		</div>
 		<h6>
 			This translation comes from the book <span class="fst-italic"
 				>The Harmonics of Aristoxenus. Edited with translation notes

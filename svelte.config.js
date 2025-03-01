@@ -7,7 +7,7 @@ const config = {
 			fallback: "404.html",
 		}),
 		paths: {
-			base: "/aristoxenus-tetrachord-maker",
+			base: "",
 		},
 	},
 };

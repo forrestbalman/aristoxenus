@@ -365,7 +365,7 @@
 	</div>
 {/snippet}
 
-<div class="d-flex flex-column my-5">
+<div class="d-flex flex-column">
 	<!-- Instructions -->
 	<div class="mb-3">
 		<h5>How do I use this thing?</h5>
@@ -666,6 +666,72 @@
 			</div>
 		</div>
 	</div>
+	<!-- Error -->
+	<div style="min-height: {buttonHeight}px;">
+		{#if tetrachord.error}
+			<p class="accent-text text-center m-0">{tetrachord.error}</p>
+		{/if}
+	</div>
+	<!-- Form input -->
+	<div
+		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-5">
+		<div>
+			<label for="parhypate">Hypate to Parhypate (in cents)</label>
+			<input
+				id="parhypate"
+				class="form-control"
+				type="number"
+				bind:value={tetrachord.parhypate.storage}
+				bind:clientHeight={buttonHeight} />
+		</div>
+		<div>
+			<label for="lichanus">Hypate to Lichanus (in cents)</label>
+			<input
+				id="lichanus"
+				class="form-control"
+				type="number"
+				bind:value={tetrachord.lichanus.storage} />
+		</div>
+		<button
+			type="button"
+			class="accent-bg text-light border-0 rounded-2 px-3"
+			style="height: {buttonHeight}px;"
+			onclick={recalculate}>
+			Recalculate
+		</button>
+		<button
+			type="button"
+			class="accent-bg text-light border-0 rounded-2 px-3"
+			style="height: {buttonHeight}px;"
+			onclick={play}
+			aria-label={playing ? "Stop" : "Play"}>
+			{#if playing}
+				<i class="bi bi-stop-fill"></i>
+			{:else}
+				<i class="bi bi-play-fill"></i>
+			{/if}
+		</button>
+	</div>
+	<!-- Presets -->
+	<div class="mb-4">
+		<div>
+			<h4 class="mb-3">
+				Click a button to generate one of the tetrachords Aristoxenus
+				explicitly mentions in <span class="fst-italic"
+					>Elementa Harmonica</span>
+			</h4>
+		</div>
+		<div class="d-flex justify-content-center flex-wrap gap-2">
+			{#each Object.entries(presets) as [name, values]}
+				<button
+					type="button"
+					class="accent-bg text-light border-0 rounded-2 px-3"
+					onclick={() => preset(name)}>
+					{name}
+				</button>
+			{/each}
+		</div>
+	</div>
 	<!-- Breakdown -->
 	<div class="overflow-y-auto mb-3" style="max-height: 200px;">
 		{#if tetrachord.title.unmelodic}
@@ -737,72 +803,6 @@
 				{/if}
 			</p>
 		{/if}
-	</div>
-	<!-- Error -->
-	<div style="min-height: {buttonHeight}px;">
-		{#if tetrachord.error}
-			<p class="accent-text text-center m-0">{tetrachord.error}</p>
-		{/if}
-	</div>
-	<!-- Form input -->
-	<div
-		class="d-flex justify-content-center align-items-end gap-3 position-relative mb-5">
-		<div>
-			<label for="parhypate">Hypate to Parhypate (in cents)</label>
-			<input
-				id="parhypate"
-				class="form-control"
-				type="number"
-				bind:value={tetrachord.parhypate.storage}
-				bind:clientHeight={buttonHeight} />
-		</div>
-		<div>
-			<label for="lichanus">Hypate to Lichanus (in cents)</label>
-			<input
-				id="lichanus"
-				class="form-control"
-				type="number"
-				bind:value={tetrachord.lichanus.storage} />
-		</div>
-		<button
-			type="button"
-			class="accent-bg text-light border-0 rounded-2 px-3"
-			style="height: {buttonHeight}px;"
-			onclick={recalculate}>
-			Recalculate
-		</button>
-		<button
-			type="button"
-			class="accent-bg text-light border-0 rounded-2 px-3"
-			style="height: {buttonHeight}px;"
-			onclick={play}
-			aria-label={playing ? "Stop" : "Play"}>
-			{#if playing}
-				<i class="bi bi-stop-fill"></i>
-			{:else}
-				<i class="bi bi-play-fill"></i>
-			{/if}
-		</button>
-	</div>
-	<!-- Presets -->
-	<div>
-		<div>
-			<h4 class="mb-3">
-				Click a button to generate one of the tetrachords Aristoxenus
-				explicitly mentions in <span class="fst-italic"
-					>Elementa Harmonica</span>
-			</h4>
-		</div>
-		<div class="d-flex justify-content-center flex-wrap gap-2">
-			{#each Object.entries(presets) as [name, values]}
-				<button
-					type="button"
-					class="accent-bg text-light border-0 rounded-2 px-3"
-					onclick={() => preset(name)}>
-					{name}
-				</button>
-			{/each}
-		</div>
 	</div>
 </div>
 

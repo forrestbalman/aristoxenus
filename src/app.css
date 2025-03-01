@@ -12,6 +12,10 @@
 	transition: all 0.3s ease;
 }
 
+a {
+	color: var(--text);
+}
+
 .background {
 	background: var(--background);
 }

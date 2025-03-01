@@ -4,13 +4,9 @@
 
 <h3>Here's the essentials</h3>
 <p>
-	In his chapter on <button
-		type="button"
-		class="fw-bold accent-text border-0 p-0 background"
-		onclick={() => (value = true)}
-		aria-label="Show differences of the genera">
+	In his chapter on <a class="accent-text" href="/differences-of-the-genera">
 		differences of the genera (click me to read the complete section)
-	</button>
+	</a>
 	in the <span class="fst-italic">Elementa Harmonica</span>, Artistoxenus
 	summarizes his approach to classifying tetrachords (four note pitch
 	collections that span a perfect Fourth) based on their intervallic
