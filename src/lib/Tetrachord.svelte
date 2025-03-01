@@ -72,7 +72,7 @@
 	// for tetrachord playback
 	function playChord() {
 		// clear any currently scheduled sounds and removes any lit up tick marks
-		clearChord()
+		clearChord();
 
 		// Tone.getTransport().scheduleOnce() uses the sound library to schedule multiple events at specific times
 		// set the light value to the tick mark that's associated with the current scale degree
@@ -213,7 +213,7 @@
 			} else {
 				tetrachord.title.diesis = "Larger Enharmonic";
 			}
-		// chromatic dieses are 1/3 tone to 1/2 tone
+			// chromatic dieses are 1/3 tone to 1/2 tone
 		} else if (
 			tetrachord.parhypate.storage >= 66 &&
 			tetrachord.parhypate.storage < 100
@@ -233,7 +233,7 @@
 			) {
 				tetrachord.title.diesis = "Larger than Hemiolic Chromatic";
 			}
-		// chromatic and diatonic genera share a potential diesis
+			// chromatic and diatonic genera share a potential diesis
 		} else {
 			tetrachord.title.diesis = "Largest Chromatic (or Diatonic)";
 		}
@@ -247,10 +247,10 @@
 		// enharmonic genus is 1 + 5/6 to 2 tones
 		if (genus > 367) {
 			tetrachord.title.genus = "Enharmonic";
-		// chromatic genus is 1 + 5/6 to 1 + 1/4 tones
+			// chromatic genus is 1 + 5/6 to 1 + 1/4 tones
 		} else if (genus <= 367 && genus > 250) {
 			tetrachord.title.genus = "Chromatic";
-		// diatonic genus is 1 + 1/4 to 1 tone
+			// diatonic genus is 1 + 1/4 to 1 tone
 		} else if (genus <= 250) {
 			tetrachord.title.genus = "Diatonic";
 		}
@@ -322,6 +322,13 @@
 		setValueToStorage();
 
 		makeFrequencies();
+	}
+
+	function preset(name) {
+		tetrachord.parhypate.storage = presets[name][0];
+		tetrachord.lichanus.storage = presets[name][1];
+
+		recalculate();
 	}
 
 	// for handling audio playback
@@ -791,7 +798,7 @@
 				<button
 					type="button"
 					class="accent-bg text-light border-0 rounded-2 px-3"
-					onclick={() => preset(values[0], values[1])}>
+					onclick={() => preset(name)}>
 					{name}
 				</button>
 			{/each}
