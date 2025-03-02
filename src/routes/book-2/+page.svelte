@@ -5,15 +5,14 @@
 
 <div class="container">
 	<!-- Intro/Color Code -->
-	<div>
+	<div class="mb-3">
 		<h1 class="text-center">Book 2</h1>
 		<div class="d-flex gap-2 flex-wrap justify-content-center">
-			<ColorCode color="#bb8fce" text="Snarky remark" />
 			<ColorCode color="#85c1e9" text="Ear first, math later" />
 			<ColorCode color="#f7dc6f" text="About the voice" />
-			<ColorCode color="#e59866" text="Terms and definitions" />
 			<ColorCode color="#82e0aa" text="Rules and guidelines" />
 			<ColorCode color="#d98880" text="Tetrachord construction" />
+			<ColorCode color="#e59866" text="Questions and inconsistencies" />
 		</div>
 	</div>
 	<!-- Summary -->
@@ -69,7 +68,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="ear-text">
 			“The geometrician makes no use of his faculty of sense-perception.
 			He does not in any degree train his sight to discriminate the
 			straight line, the circle, or any other figure, such training
@@ -92,7 +91,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			"But as a fact neither clarinets nor any other instrument will apply
 			a foundation for the principles of harmony.” (196)
 		</h5>
@@ -104,7 +103,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“The following fractions of a tone occur in melody…the half, called
 			a semi tone...the third, called the smallest Chromatic diesis…the
 			quarter, called the smallest Enharmonic diesis.” (199)
@@ -121,7 +120,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			“...many have misunderstood…that melody admits the division of the
 			tone into three or four equal parts…to employ the third part of a
 			tone is a very different thing from dividing a tone into three parts
@@ -135,7 +134,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="questions-text">
 			“There is admittedly but one interval between the Mese and Paramese,
 			and again between the Mese and Hypate, and in fact between any pair
 			of the permanent notes. Why then should we admit a plurality of
@@ -165,7 +164,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“We see that the Nete and Mese differ in function from the Paranete
 			and Lichanus, and the Paranete and Lichanus again from the Trite and
 			Parhypate, and these latter again from the Paramese and Hypate; and
@@ -182,7 +181,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="ear-text">
 			“For the ear detects a motion peculiar to each of the genera, though
 			each genus employs not one but many divisions of the tetrachord.”
 			(201)
@@ -197,7 +196,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“There are certain divisions of the tetrachord which stand out from
 			the rest as familiar…one is Enharmonic, in which the Pycnum is a
 			semitone, and it’s complement two tones…” (202)
@@ -210,7 +209,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“...three are Chromatic, namely, the Soft, the Hemiolic, and the
 			Tonic Chromatic. The division of the Soft Chromatic is… the Pycnum
 			consists of two of the smallest Chromatic dieses, while its
@@ -250,7 +249,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“There are two divisions of the Diatonic genus, the Soft and the
 			Sharp Diatonic. The… Soft Diatonic… the interval between the Hypate
 			and Parhypate is a semitone, that between the Parhypate and Lichanus
@@ -279,7 +278,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			“Thus, while we have six Lichani, as there are six divisions of the
 			tetrachord...we have but four Parhypate, that is, two less than the
 			divisions of the tetrachord. For the semitone Parhypate is employed
@@ -309,7 +308,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“...the Hypate and Parhypate may be equal to that between the
 			Parhypate and Lichanus, or less… but never greater...” (204)
 		</h5>
@@ -320,7 +319,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="tetrachord-text">
 			"..and also may be ascertained in the Chromatic by taking a
 			Parhypate of the Soft, and a Lichanus of the Tonic Chromatic: for
 			such divisions of the Pycnum sound melodious. ...the opposite order
@@ -363,7 +362,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			“...the interval between the Parhypate and Lichanus may be equal to,
 			greater than, or less than that between the Lichanus and
 			Mese...equal in the Sharp Diatonic...less in all the other
@@ -402,7 +401,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="voice-text">
 			“...in investigating continuity the laws of melody must be our
 			guide, nor must we imitate those who shape their account of
 			continuity with a view to the massing of small intervals...the
@@ -424,7 +423,7 @@
 		</p>
 	</div>
 	<div>
-		<h5>
+		<h5 class="rules-text">
 			"...there is no interval which can be divided ad infinitum in
 			melody, and that the natural laws of melody assign a maximum number
 			of fractions to every interval. We necessarily infer that the notes
@@ -457,4 +456,246 @@
 			(or what we would consider the top) down.
 		</p>
 	</div>
+	<div>
+		<h5 class="rules-text">
+			“Whatever be the genus, from whatever note one starts, if the melody
+			moves in continuous progression either upwards or downwards, the
+			fourth note in order from any note must for with it the concord of
+			the Fourth, or the fifth note in order from it the concord of the
+			Fifth. Any note that answers neither of these tests must be… out of
+			tune...this then [is] a fundamental principle, the violation of
+			which is destructive of harmony. ” (205)
+		</h5>
+		<p>
+			Here, Aristoxenus elaborates about the significance of the Fourth
+			(and the Fifth for the case of disjunct scales, I imagine) as an
+			interval not just as an outline of the tetrachord, but as a means of
+			both determining whether or not it's in tune, as well as its
+			placement in a scale consisting of more than 1 tetrachord.
+		</p>
+	</div>
+	<div>
+		<h5 class="questions-text">
+			“It is quite possible that notes of a scale might form the
+			above-mentioned concords with one another, and yet that the scale
+			might be unmelodiously constructed.” (205)
+		</h5>
+		<p>
+			This quote is an extension of the previous. It states that
+			unmelodious scales can produce notes that are seemingly in tune due
+			to having a concordant interval above it. It just so happens that
+			this must be true of melodious scales, despite the fact that
+			unemlodious scales can also produce the same result.
+		</p>
+	</div>
+	<div>
+		<h5 class="rules-text">
+			“If any two tetrachords are to belong to the same scale, one or
+			other of the following conditions must be fulfilled…they must be in
+			concord with each other, the notes of one forming some concord or
+			other with the corresponding notes of the other…or they must both be
+			in concord with a third tetrachord, with which they are alike
+			continuous but in opposite directions.” (206)
+		</h5>
+		<p>
+			This quote is a bit of a head scratcher for me due to the second
+			condition, but before I try to tackle that, the first condition is
+			fairly straightforward. Aristoxenus appears to be reiterating what
+			he said in the previous quotes: that multiple tetrachords must have
+			a concordant relationship between each set of corresponding notes.
+			In other words, each note in a tetrachord also has a perfect Fourth
+			or Fifth above or below it.
+		</p>
+		<p>
+			The second scenario applies to scales containing three or more
+			tetrachords. Saying that the tetrachords must be in concord with a
+			third implies that the relationship of a perfect Fourth or Fifth
+			still applies. The main difference is that because this third
+			tetrachord is what I believe to be the middle tetrachord, due to the
+			fact that the tetrachords are continuous in opposite directions.
+			What confuses me the most is where exactly the middle tetrachord is
+			placed in the scale. My instinct is to assume that it's placed no
+			differently that any other linked tetrachords, either conjunct where
+			it shares a note with the tetrachord below, or disjunct where it's
+			separated by a tone.
+		</p>
+		<p>
+			If this were the case, we could experiment with natural notes: CDEF
+			GABC CDEF, which is a set of 3 tetrachords, the lower disjunct with
+			the middle, and the middle conjunct with the upper. If we look at
+			the bottom two tetrachords we see the conditions being met, each
+			note has a concordant interval with its partner: CG, DA, EB, FC. The
+			notes are also continuous from bottom to top. The order of intervals
+			from bottom to top is: 1, 1, 1/2, 1, 1, 1, 1/2.
+		</p>
+		<p>
+			If we do the same for the middle and upper tetrachords, we see the
+			same conditions being met, this time in Fourths: GC, AD, BE, CF. But
+			the main difference is the continuity. The notes are almost
+			continuous from top to bottom following the reverse order of
+			intervals from the bottom two tetrachords: 1/2, 1, 1, 1/2, 1, 1;
+			however because the middle and top tetrachords share a note, there's
+			going to always be a missing whole tone. This is really confusing,
+			and while I'm not 100% certain that this is exactly what Aristoxenus
+			is saying, it's the best I can reason.
+		</p>
+	</div>
+	<div>
+		<h5 class="ear-text">
+			“...the ear is much more assured of the magnitudes of the concords
+			that of the discords.” (206)
+		</h5>
+		<p>
+			A bit of a break from the verbose theory with this quote. It talks
+			about concords being easier to distinguish from one another than
+			discords. Even though Aristoxenus states they're both infinite in
+			Book 1, an infinite number of concords would imply a never ending
+			process of adding octaves to the Fourth and Fifth. Because the
+			Fourth and Fifth are really the only two distinct concords, in
+			comparison to the many discords within the octave, they're easier to
+			pick out.
+		</p>
+	</div>
+	<div>
+		<h5 class="rules-text">
+			“...the most accurate method of ascertaining a discord is by the
+			principle of concordance....one should take the Fourth above the
+			given note, then descend a Fifth, then ascend a Fourth again, and
+			finally descend another Fifth...to ascertain the discord in the
+			other direction, the concords must be taken in the other direction.”
+			(206)
+		</h5>
+		<p>
+			Here, Aristoxenus introduces us to the "principle of concordance,"
+			which looks quite similar to our circle of fifths. Ascending or
+			descending a more than 1 Fourth or Fifth will eventually produce a
+			series of discords. Aristoxenus contextualizes this by using it to
+			identify the <span class="fst-italic">ditone</span> which is literally
+			"2 tones," or a major Third. Even though his procedure stops at the ditone,
+			you could still produce every discord down to the semi tone using this.
+		</p>
+		<p>
+			For example: Fourth up, Fith down, Fourth up, Fifth down, starting
+			on C works out to: C, F, Bb, Eb, Ab. Therefore, this process will
+			always produce a ditone below the starting note.
+		</p>
+		<p>
+			Conversely: Fifth up, Fourth down, Fifth up, Fourth down, starting
+			on C works out to: C, G, D, A, E. Therefore, this process will
+			always produce a ditone above the starting note.
+		</p>
+	</div>
+	<div>
+		<h5 class="rules-text">
+			“...if a discord be subtracted from a concord by the method of
+			concordance, the remaining discord is thereby ascertained on the
+			same principle.” (207)
+		</h5>
+		<p>
+			Because Aristoxenus' is being vague about what "a discord" is
+			implying here, we don't know if he has a particular interval in
+			mind. The way I interpret this is that if you perform the operation
+			from both directions, the result will give you the complement that
+			adds up to the concord.
+		</p>
+		<p>
+			For example, C to F is a Fourth. A ditone up from C is E (C, G, D,
+			A, E). The remaining space in the Fourth is a semi tone, E to F. A
+			ditone down from F is Db (F, Bb, Eb, Ab, Db). The remaining space in
+			the Fourth is also a semi tone, Db to C.
+		</p>
+		<p>
+			Let's do the same with C to G, which is a Fifth. This time our
+			discord will be Eb, which is a minor Third above C (C, F, Bb, Eb).
+			The remaining space in the Fifth is a ditone, Eb to G. A minor Third
+			down from G is E (G, D, A, E), which leaves a ditone worth of space
+			between E and C.
+		</p>
+	</div>
+	<div>
+		<h5 class="rules-text">
+			“The surest method of verifying our original assumption that the
+			Fourth consists of two and a half tones…let us find the discord of
+			two tones above its lower note...and the same discord below its
+			higher note...the complements will be equal, since they are
+			remainders obtained by subtracting equal from equals...let us take
+			the Fourth above the lower note of the higher ditone...and the
+			Fourth below the higher note in the lower ditone...adjacent to each
+			of the extreme notes of the scale…will be two complements in
+			juxtaposition, which must be equal.” (207)
+		</h5>
+		<p>
+			This is an elaboration of the process I went over above. Aristoxenus
+			is using it to prove what we already know: that the Fourth is 2 and
+			1/2 tones, and that the Fifth is a Fourth with an additional tone.
+		</p>
+		<p>
+			To prove the Fourth's size, in this case we'll use C to F, we find
+			the ditone above the lower note, which is E. Then we do the same for
+			the ditone below the higher note, which is Db. The complements are
+			equal, like we saw in the previous quote, C to E leaves a semi tone
+			up to F, and F to Db leaves a semi tone down to C. 2 tones and 1/2
+			tone.
+		</p>
+		<p>
+			To prove the Fifth's size, we start by taking the Fourth above the
+			bottom of the higher ditone: Db to Gb. Then the Fourth below the top
+			of the lower ditone: E to B. If we make a continuous scale using the
+			pitches, the result is a "Fifth" (or a diminished 6th if you spell
+			it diatonically): B, C, Db, E, F, Gb. 1/2 + 1/2 + 1 and 1/2 + 1/2 +
+			1/2 = 2 and 1/2 tones (a Fourth) + 1 tone.
+		</p>
+	</div>
+	<div>
+		<h5 class="rules-text">
+			“...if the concord formed by the extreme notes…is greater than a
+			Fourth, and less than an octave, it must be a Fifth.” (208)
+		</h5>
+		<p>
+			To preface, this quote is accompanied by more explanation that
+			justifies the point of these procedures, however this quote is
+			really the best summary of what I believe Aristoxenus set out to
+			achieve with the "principle of concords" in this context. This quote
+			is essentially the end of Book 2. After doing all these procedures
+			on my own, I didn't really expect the point to be about determining
+			the size of the concords in question.
+		</p>
+		<p>
+			Like he said in an earlier quote, concords are easier to distinguish
+			by ear than discords because of their distinct size. Because
+			concords are much more clearly defined in terms of their sizes, if a
+			sum of intervals results in an interval you can identify as a
+			concord, and it's bigger than a Fourth, but smaller than an octave,
+			it must be a Fifth. Honestly, kind of a let down because I feel like
+			he's stating the obvious. Of course a Fifth is in between a Fourth
+			and and Octave, Aristoxenus. Even though I didn't have expectations
+			about how the book was going to end, all of that grappling with
+			Aristoxenus' writing ultimately led to a pretty underwhelming proof.
+			Then again, this is a reminder that Aristoxenus didn't have the
+			centuries of music theory and mathematics that we have today, so
+			proving truths like this one might've been a huge deal back then.
+		</p>
+	</div>
 </div>
+
+<style>
+	.ear-text {
+		color: #85c1e9;
+	}
+
+	.voice-text {
+		color: #f7dc6f;
+	}
+
+	.rules-text {
+		color: #82e0aa;
+	}
+
+	.tetrachord-text {
+		color: #d98880;
+	}
+
+	.questions-text {
+		color: #e59866;
+	}
+</style>

@@ -7,7 +7,7 @@
 	<!-- Intro/Color Code -->
 	<div>
 		<h1 class="text-center">Book 1</h1>
-		<div class="d-flex gap-2 flex-wrap justify-content-center">
+		<div class="d-flex gap-2 flex-wrap justify-content-center mb-3">
 			<ColorCode color="#bb8fce" text="Snarky remark" />
 			<ColorCode color="#85c1e9" text="Ear first, math later" />
 			<ColorCode color="#f7dc6f" text="About the voice" />
