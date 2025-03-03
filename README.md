@@ -1,7 +1,4 @@
 Things to add:
-    - More math
-        - Frequency => Interval ratios
-        - Frequency => Number of tones
     - Playback
         - Start from a chosen frequency
         - Do more research about what a more "authentic" base frequency would be
@@ -9,5 +6,3 @@ Things to add:
         - Finish longer excerpt
         - Make it more curricular
         - Add images
-    - Presets
-        - Add buttons that include cases that are mentioned explicitly in the textbook
