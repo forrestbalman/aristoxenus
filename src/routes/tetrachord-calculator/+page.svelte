@@ -2,7 +2,6 @@
 	import Tetrachord from "$lib/Tetrachord.svelte";
 	import Excerpt from "$lib/Excerpt.svelte";
 	import Short from "$lib/Short.svelte";
-	import Long from "$lib/Book1.svelte";
 </script>
 
 <div class="container">
