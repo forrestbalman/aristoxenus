@@ -228,16 +228,16 @@
 				tetrachord.parhypate.storage > 66 &&
 				tetrachord.parhypate.storage < 75
 			) {
-				tetrachord.title.diesis = "Larger than Soft Chromatic";
+				tetrachord.title.diesis = "somewhat small Chromatic";
 			} else if (
 				tetrachord.parhypate.storage > 75 &&
 				tetrachord.parhypate.storage < 100
 			) {
-				tetrachord.title.diesis = "Larger than Hemiolic Chromatic";
+				tetrachord.title.diesis = "somewhat large Chromatic";
 			}
 			// chromatic and diatonic genera share a potential diesis
 		} else {
-			tetrachord.title.diesis = "Largest Chromatic (or Diatonic)";
+			tetrachord.title.diesis = null;
 		}
 	}
 
@@ -405,16 +405,18 @@
 					tetrachord.title.genus[0].toLowerCase() === "u")
 					? "n"
 					: ""}
-				{tetrachord.title.genus} tetrachord with a{tetrachord.title
-					.diesis &&
-				(tetrachord.title.diesis[0].toLowerCase() === "a" ||
-					tetrachord.title.diesis[0].toLowerCase() === "e" ||
-					tetrachord.title.diesis[0].toLowerCase() === "i" ||
-					tetrachord.title.diesis[0].toLowerCase() === "o" ||
-					tetrachord.title.diesis[0].toLowerCase() === "u")
-					? "n"
-					: ""}
-				{tetrachord.title.diesis} diesis
+				{tetrachord.title.genus} tetrachord
+				{#if tetrachord.title.diesis}
+					with a{tetrachord.title.diesis &&
+					(tetrachord.title.diesis[0].toLowerCase() === "a" ||
+						tetrachord.title.diesis[0].toLowerCase() === "e" ||
+						tetrachord.title.diesis[0].toLowerCase() === "i" ||
+						tetrachord.title.diesis[0].toLowerCase() === "o" ||
+						tetrachord.title.diesis[0].toLowerCase() === "u")
+						? "n"
+						: ""}
+					{tetrachord.title.diesis} diesis
+				{/if}
 			{/if}
 		</h3>
 	</div>
