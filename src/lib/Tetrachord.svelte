@@ -573,6 +573,13 @@
 				</div>
 				{@render tick("hypate-to-lichanus-lichanus", 100)}
 			</div>
+			{#if tetrachord.lichanus.value < 250 && tetrachord.lichanus.value >= 100}
+				<div
+					class="d-md-flex d-none justify-content-center"
+					style="width: {percent(tetrachord.lichanus.value)}%;">
+					<p class="m-0 fw-bold">Pycnum</p>
+				</div>
+			{/if}
 		</div>
 		<!-- Parhypate to Mese -->
 		<div>

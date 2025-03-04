@@ -1,5 +1,4 @@
 <script>
-	import { base } from "$app/paths";
 	import ColorCode from "$lib/ColorCode.svelte";
 </script>
 

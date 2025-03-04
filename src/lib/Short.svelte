@@ -169,3 +169,33 @@
 		so it's omitted.
 	</p>
 </div>
+<div>
+	<h5>In closing</h5>
+	<p>
+		While I'm hoping this calculator works as a tool for you to construct
+		ultra precise tetrachords in the spirit of Aristoxenus, there is an
+		important point that's getting lost in the sauce here. Aristoxenus was
+		very much about the body's natural ability to perceive and produce
+		pitch. Because this calculator is operating at the cent level, there's a
+		level of precision that Aristoxenus wasn't able to achieve. In fact, the
+		more I think about why Aristoxenus referred to the number of Lichani as
+		"infinite," but only provided 6 tetrachord shades, the more I think that
+		it was less about the math he was doing, and more about our ability to
+		perceive differences between shades of the same genus.
+	</p>
+	<p>
+		If we played two almost identical tetrachords: 50 - 50 - 400 cents, and
+		51 - 51 - 398 cents, could we perceive the difference? Are these even
+		separate shades because their intervals are so similar? My guess is that
+		with the precision we have now, yes they are distinct, but I find that
+		it takes away from the practical application of music theory that
+		Aristoxenus was trying to achieve, and heads back in the direction of a
+		math first approach to music.
+	</p>
+	<p>
+		At the end of the day, I still think the calculator is a useful tool for
+		constructing your own scales and tetrachords, but I think it's important
+		to remember that all of Aristoxenus' theories were about making
+		connections with the sounds you hear and the sounds you produce.
+	</p>
+</div>

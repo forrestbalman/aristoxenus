@@ -35,5 +35,10 @@
 				? 'accent-text'
 				: ''}"
 			href="{base}/book-2">Book 2</a>
+		<a
+			class="fs-4 text-decoration-none {url.route.id === '/book-3'
+				? 'accent-text'
+				: ''}"
+			href="{base}/book-3">Book 3</a>
 	</div>
 </nav>
