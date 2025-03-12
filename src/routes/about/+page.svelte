@@ -30,6 +30,11 @@
 			emphasis on whether or not any theoretical pitch material is
 			pragmatic to the practicing musician.
 		</p>
+		<p>
+			Want to check out some of my sources in more detail? <a
+				href="{base}/about/bibliography">Click here</a
+			>!
+		</p>
 	</div>
 	<div
 		class="w-100 d-md-none justify-content-center overflow-hidden mb-3"

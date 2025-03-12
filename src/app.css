@@ -13,7 +13,19 @@
 }
 
 a {
+	color: var(--accent);
+}
+
+a:hover {
 	color: var(--text);
+}
+
+nav a {
+	color: var(--text);
+}
+
+nav a:hover {
+	color: var(--accent);
 }
 
 .background {
