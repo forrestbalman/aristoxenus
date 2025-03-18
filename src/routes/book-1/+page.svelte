@@ -587,15 +587,9 @@
 			Long story short, the range of the middle interval is a quarter tone
 			to 1 and a quarter tones (inclusive).
 		</p>
-		<figure>
-			<img
-				src="{base}/8.png"
-				alt="A diagram of the interval limit between Parhypate and Lichanus."
-				class="img-fluid mb-3 rounded-1" />
-			<figcaption class="fw-lighter">
-				A diagram of the interval limit between Parhypate and Lichanus.
-			</figcaption>
-		</figure>
+		<Figure
+			file={8}
+			caption="A diagram of the interval limit between Parhypate and Lichanus." />
 	</div>
 	<div>
 		<h5 class="rules-text">
