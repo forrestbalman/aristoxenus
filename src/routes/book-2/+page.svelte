@@ -1,5 +1,9 @@
 <script>
+	import { base } from "$app/paths";
 	import ColorCode from "$lib/ColorCode.svelte";
+	import Figure from "$lib/Figure.svelte";
+	import Bold from "$lib/Bold.svelte";
+	import Italics from "$lib/Italics.svelte";
 </script>
 
 <div class="container">
@@ -117,6 +121,7 @@
 			dieses results in a 3/4 tone pycnum, and because that's also a sum
 			of quarter tones, it's most likely a melodic division of the tone.
 		</p>
+		<Figure file={30} caption="Both smallest dieses and the semitone." />
 	</div>
 	<div>
 		<h5 class="voice-text">
@@ -131,6 +136,9 @@
 			fractional divisions of the tone don't necessarily mean that playing
 			many of them in succession will produce a melodious result.
 		</p>
+		<Figure
+			file={31}
+			caption="Diagrams of third tones being used in a Chromatic tetrachord, and of consecutive third tones being used unmelodiously." />
 	</div>
 	<div>
 		<h5 class="questions-text">
@@ -145,6 +153,7 @@
 			scale degree names (in order from lowest to highest): Paramese,
 			Trite, Paranete, and Nete.
 		</p>
+		<Figure file={32} caption="A diagram of all octave scale degrees" />
 		<p>
 			This question talks about why the Lichanus is the only variable note
 			in the scale, in comparison to the other notes, which are fixed in
@@ -161,6 +170,9 @@
 			more emphasis on the Lichanus being variable, while the Parhypate is
 			conceptually just as variable, albeit the range is smaller.
 		</p>
+		<Figure
+			file={33}
+			caption="A diagram of fixed and variable intervals within the tetrachord." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -178,6 +190,9 @@
 			purpose because some scales could potentially produce a diminished
 			Fifth.
 		</p>
+		<Figure
+			file={34}
+			caption="A diagram of the 4 Fifths produced by two tetrachords." />
 	</div>
 	<div>
 		<h5 class="ear-text">
@@ -193,6 +208,9 @@
 			but even if the ear can't distinguish the shades, it can still tell
 			what genus a tetrachord belongs to.
 		</p>
+		<Figure
+			file={35}
+			caption="A diagram of 2 tetrachords that belong to the Diatonic genus." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -206,6 +224,7 @@
 			however, here we see that it contains a semi tone pycnum (1/4 tone +
 			1/4 tone) and a 2 tone complement.
 		</p>
+		<Figure file={14} caption="A diagram of an Enharmonic tetrachord." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -236,16 +255,23 @@
 			all together, you get 3/2 + 1/3, which requires you to think in
 			terms of 6ths: 9/6 + 2/6, which equally 11/6, or 1 and 5/6 tones.
 		</p>
+		<Figure file={15} caption="A diagram of a Soft Chromatic tetrachord." />
 		<p>
 			The Hemiolic Chromatic is the unusually vague case from Book 1
 			that's explained much more clearly here. It's pycnum is 1 and 1/2
 			times the Enharmonic pycnum, which works out to 3/4 tones. This
 			leaves us with a complement of 1 and 3/4 tones.
 		</p>
+		<Figure
+			file={23}
+			caption="A diagram of a Hemiolic Chromatic tetrachord." />
 		<p>
 			Lastly, the Tonic Chromatic is a series of 2 semi tones, leaving us
 			with a complement of 1 and 1/2 tones.
 		</p>
+		<Figure
+			file={24}
+			caption="A diagram of a Tonic Chromatic tetrachord." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -270,11 +296,13 @@
 			the same as the sum of the first two intervals, 1 and 1/4 tones,
 			which is why this tetrachord doesn't have a pycnum.
 		</p>
+		<Figure file={25} caption="A diagram of a Soft Diatonic tetrachord." />
 		<p>
 			The Sharp (or some resources call it Intense) Diatonic is a 1/2 tone
 			followed by 2 whole tones. This tetrachord is most like the interval
 			relationships we'll find in our everyday Diatonic scales.
 		</p>
+		<Figure file={26} caption="A diagram of a Sharp Diatonic tetrachord." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -297,6 +325,9 @@
 			can't say for sure, but just from reading, there's a hint of
 			contradiction.
 		</p>
+		<Figure
+			file={36}
+			caption="A diagram of the 6 unique intervals between Hypate and Lichanus." />
 		<p>
 			Second, he talks about the disparity between the number of divisions
 			of the tetrachord, and the number of Parhypate. While the
@@ -305,6 +336,9 @@
 			parhypate. Even though he doesn't say this explicitly, I think this
 			is a hint at why he doesn't call the semi tone a diesis.
 		</p>
+		<Figure
+			file={37}
+			caption="A diagram of the 4 unique intervals from Hypate to Parhypate." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -339,12 +373,17 @@
 			1 and 1/2 tones. This is a melodic tetrachord because it's intervals
 			are packed from smallest to largest, left to right.
 		</p>
+		<Figure
+			file={38}
+			caption="A diagram of a melodic tetrachord using a Soft Chromatic Pahypate and a Tonic Chromatic Lichanus." />
 		<p>
-			The next example is the inverse of the first example, 2/3 tone + 1/3
-			tone + 1 and 1/2 tones. This is an unmelodious tetrachord because
-			the intervals are no longer packed from smallest to largest, left to
-			right.
+			The next example produces an unmelodic result because the interval
+			from Parhypate to Lichanus is smallest: a semitone Parhypate (1/2
+			tone) and a Lichanus of the Hemiolic Chromatic (1 and 1/2 tones).
 		</p>
+		<Figure
+			file={39}
+			caption="A diagram of an unmelodious tetrachord using a Hemiolic Chromatic Parhypate and a Soft Chromatic Lichanus." />
 		<p>
 			The last example is another unmelodious tetrachord that consists of
 			the Parhypate of the Hemiolic Chromatic (3/8 tone), and the Licahnus
@@ -359,6 +398,9 @@
 			haven't encountered 24ths of a tone in any supplemental research
 			I've done on Aristoxenus.
 		</p>
+		<Figure
+			file={40}
+			caption="A diagram of an unmelodious tetrachord using a Hemiolic Chromatic Parhypate and a Soft Chromatic Lichanus." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -383,6 +425,7 @@
 			case: the Sharp Diatonic, which conists of 1/2 tone + 1 tone + 1
 			tone.
 		</p>
+		<Figure file={26} caption="A diagram of a Sharp Diatonic tetrachord." />
 		<p>
 			The middle interval is greater in shades that involve the greatest
 			Diatonic Lichanus (1 and 1/2 tones) and any Parhypate that's lower
@@ -398,6 +441,9 @@
 			In every other shade, we see that the middle interval is less than
 			the right most interval.
 		</p>
+		<Figure
+			file={41}
+			caption="A diagram of a tetrachord with a middle interval that's larger than the rightmost interval: a Soft Chromatic Parhypate and an Intense Diatonic Lichanus." />
 	</div>
 	<div>
 		<h5 class="voice-text">
@@ -412,13 +458,16 @@
 			over the quote quickly, you see that the hard and fast rule is
 			"short of three." Why doesn't he just say 2? I don't know 🤷.
 		</p>
+		<Figure
+			file={27}
+			caption="A diagram of more than 3 consecutive quarter tones." />
 		<p>
 			I think we also can read into a bit of nuance about the word diesis
-			here. Earlier, I was theorizing why semi tones weren't referred to
-			as dieses; however, if this adds additional context to the
-			discussion, semi tones can be sung consecutively without issue, but
-			smaller intervals can't (according to Aristoxenus). Therefore, I'm
-			inclined to believe that semi tones aren't a diesis.
+			here. Earlier, I was theorizing why semitones weren't referred to as
+			dieses; however, if this adds additional context to the discussion,
+			semi tones can be sung consecutively without issue, but smaller
+			intervals can't (according to Aristoxenus). Therefore, I'm inclined
+			to believe that semitones aren't a diesis.
 		</p>
 	</div>
 	<div>
@@ -437,6 +486,18 @@
 			only be divided so many times before they become impractical to
 			sing, or difficult to distinguish, but he also refers to fractional
 			divisions of the tone as "consecutive."
+		</p>
+		<p>
+			So, with this quote in mind, why does my calculator divide the tone
+			into cents? First, the math is a little more intuitive with whole
+			numbers, so calculating intervals in terms of cents is easier for me
+			to visualize. Second, all of the limitations that Aristoxenus puts
+			in place for minimum and maximum intervals are in place. All the
+			calculator does is allow for cent divisions of the tone within the
+			range. For example, the Parhypate can be between 1/4 (50 cents) and
+			1/2 (100 cents) tone, inclusive. So a 13/50 (52 cents) is
+			theoretically possible, but singing it would be basically
+			indistinguishable from a 1/4 tone Parhypate.
 		</p>
 		<p>
 			I want there to be more to read into this, because it feels complex
@@ -469,9 +530,13 @@
 			Here, Aristoxenus elaborates about the significance of the Fourth
 			(and the Fifth for the case of disjunct scales, I imagine) as an
 			interval not just as an outline of the tetrachord, but as a means of
-			both determining whether or not it's in tune, as well as its
-			placement in a scale consisting of more than 1 tetrachord.
+			both determining whether or not it's "in tune", or in other words,
+			continuous.
 		</p>
+		<p></p>
+		<Figure
+			file={42}
+			caption="A diagram of a double scales concordances between the upper and lower tetrachords, as well as an example of 2 similar intervals, 1 continuous, 1 not continuous (or transilient)." />
 	</div>
 	<div>
 		<h5 class="questions-text">
@@ -486,6 +551,9 @@
 			this must be true of melodious scales, despite the fact that
 			unemlodious scales can also produce the same result.
 		</p>
+		<Figure
+			file={43}
+			caption="a diagram of a seemingly melodious scale that's actually unmelodious." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -505,6 +573,9 @@
 			In other words, each note in a tetrachord also has a perfect Fourth
 			or Fifth above or below it.
 		</p>
+		<Figure
+			file={28}
+			caption="A diagram of 2 linked tetrachords forming a double scale." />
 		<p>
 			The second scenario applies to scales containing three or more
 			tetrachords. Saying that the tetrachords must be in concord with a
@@ -519,25 +590,16 @@
 			separated by a tone.
 		</p>
 		<p>
-			If this were the case, we could experiment with natural notes: CDEF
-			GABC CDEF, which is a set of 3 tetrachords, the lower disjunct with
-			the middle, and the middle conjunct with the upper. If we look at
-			the bottom two tetrachords we see the conditions being met, each
-			note has a concordant interval with its partner: CG, DA, EB, FC. The
-			notes are also continuous from bottom to top. The order of intervals
-			from bottom to top is: 1, 1, 1/2, 1, 1, 1, 1/2.
+			This could be worked out in a bunch of different ways, but a unique
+			example would be 3 linked Diatonic tetrachords with no disjunctions,
+			which would start on E and end on G a Tenth above. We know that the
+			multiple scale this scenario forms is continuous and melodious
+			because all of the notes form a perfect Fourth either above or below
+			with the middle tetrachord.
 		</p>
-		<p>
-			If we do the same for the middle and upper tetrachords, we see the
-			same conditions being met, this time in Fourths: GC, AD, BE, CF. But
-			the main difference is the continuity. The notes are almost
-			continuous from top to bottom following the reverse order of
-			intervals from the bottom two tetrachords: 1/2, 1, 1, 1/2, 1, 1;
-			however because the middle and top tetrachords share a note, there's
-			going to always be a missing whole tone. This is really confusing,
-			and while I'm not 100% certain that this is exactly what Aristoxenus
-			is saying, it's the best I can reason.
-		</p>
+		<Figure
+			file={44}
+			caption="A diagram of 3 linked Diatonic tetrachords forming a conjunct triple scale." />
 	</div>
 	<div>
 		<h5 class="ear-text">
@@ -578,11 +640,17 @@
 			on C works out to: C, F, Bb, Eb, Ab. Therefore, this process will
 			always produce a ditone below the starting note.
 		</p>
+		<Figure
+			file={45}
+			caption="A diagram of the principle of concordance going down from C to A-flat." />
 		<p>
 			Conversely: Fifth up, Fourth down, Fifth up, Fourth down, starting
 			on C works out to: C, G, D, A, E. Therefore, this process will
 			always produce a ditone above the starting note.
 		</p>
+		<Figure
+			file={46}
+			caption="A diagram of the principle of concordance going up from C to E." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -599,10 +667,13 @@
 		</p>
 		<p>
 			For example, C to F is a Fourth. A ditone up from C is E (C, G, D,
-			A, E). The remaining space in the Fourth is a semi tone, E to F. A
+			A, E). The remaining space in the Fourth is a semitone, E to F. A
 			ditone down from F is Db (F, Bb, Eb, Ab, Db). The remaining space in
-			the Fourth is also a semi tone, Db to C.
+			the Fourth is also a semitone, Db to C.
 		</p>
+		<Figure
+			file={47}
+			caption="A diagram showing the same interval being the result of the method of concordance from the bottom and top of a perfect Fourth." />
 		<p>
 			Let's do the same with C to G, which is a Fifth. This time our
 			discord will be Eb, which is a minor Third above C (C, F, Bb, Eb).
@@ -610,6 +681,9 @@
 			down from G is E (G, D, A, E), which leaves a ditone worth of space
 			between E and C.
 		</p>
+		<Figure
+			file={48}
+			caption="A diagram showing the same interval being the result of the method of concordance from the bottom and top of a perfect Fifth." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -636,6 +710,9 @@
 			up to F, and F to Db leaves a semi tone down to C. 2 tones and 1/2
 			tone.
 		</p>
+		<Figure
+			file={49}
+			caption="A diagram of the process Aristoxenus uses to prove the size of the Fourth." />
 		<p>
 			To prove the Fifth's size, we start by taking the Fourth above the
 			bottom of the higher ditone: Db to Gb. Then the Fourth below the top
@@ -644,6 +721,9 @@
 			it diatonically): B, C, Db, E, F, Gb. 1/2 + 1/2 + 1 and 1/2 + 1/2 +
 			1/2 = 2 and 1/2 tones (a Fourth) + 1 tone.
 		</p>
+		<Figure
+			file={50}
+			caption="A diagram of the process Aristoxenus uses to prove the size of the Fifth." />
 	</div>
 	<div>
 		<h5 class="rules-text">

@@ -1,5 +1,9 @@
 <script>
+	import { base } from "$app/paths";
 	import ColorCode from "$lib/ColorCode.svelte";
+	import Figure from "$lib/Figure.svelte";
+	import Bold from "$lib/Bold.svelte";
+	import Italics from "$lib/Italics.svelte";
 </script>
 
 <div class="container">
@@ -68,12 +72,14 @@
 		</h5>
 		<p>
 			This is referring to whether or not a pair of tetrachords are linked
-			by their starting/ending note, i.e. B-C-D-E-F-G-A, or separated by a
-			tone, i.e. B-C-D-E-F#-G-A-B. Notice how both tetrachords have an
-			identical interval structure whether you start on E for the higher
-			tetrachord in the first example, and F# for the higher tetrachord in
-			the second.
+			by their starting/ending note, or separated by a tone. Notice how
+			both tetrachords have an identical interval structure whether you
+			start on A for the higher tetrachord in the first example, and B for
+			the higher tetrachord in the second.
 		</p>
+		<Figure
+			file={51}
+			caption="A diagram of a conjunct and a disjunct tetrachord from the Diatonic genus." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -100,16 +106,20 @@
 			tetrachords would have to be made up of two similar tetrachords,
 			followed by a dissimilar one.
 		</p>
+		<Figure
+			file={52}
+			caption="Scenario 1, two Intense Diatonic disjunct tetrachords followed by a conjunct Diatonic tetrachord with an Enharmonic diesis." />
 		<p>
 			The second part of the quote says something that results in a
-			similar conclusion. A dissimilar tetrachord can't stand on its own.
-			In other words, it has to be at the end of a scale, or paired with a
-			tetrachord similar to itself. From my understanding, here's an
-			example. We could have a scale that goes: B-C-D-E-F-G-A-B-C-Eb-F,
-			because the dissimilar tetrachord isn't being used to separate two
-			similar tetrachords. However, B-C-D-E-F#-G-Ab-B-C-D-E, wouldn't be
-			melodious because the dissimilar tetrachord is in the middle.
+			similar conclusion. Two tetrachords that are dissimilar can be
+			continuous like in the scenario below, but separating them with a
+			third dissimilar tetrachord isn't allowed because they wouldn't be
+			able to be continuous on account of Aristoxenus' definition from
+			Book 2.
 		</p>
+		<Figure
+			file={53}
+			caption="Scenario 2, two tetrachords, one Diatonic, and one Chromatic forming a conjunct octave scale." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -124,10 +134,10 @@
 			what "successive" means.
 		</p>
 		<p>
-			The majority of the importance of this proof comes from the ditone
-			(or intervals greater than a tone for that matter). In an Enharmonic
-			tetrachord, there is a successive ditone from Lichanus to Mese. B-B
-			quarter #-C-E. This is a simple interval because E succeeds C.
+			The majority of the importance of this proof, to me, comes from the
+			ditone (or intervals greater than a tone for that matter). In an
+			Enharmonic tetrachord, there is a successive ditone from Lichanus to
+			Mese.
 		</p>
 		<p>
 			The ditone can also not be a simple interval if the notes aren't
@@ -136,6 +146,9 @@
 			that separates the C and E interrupts the succession. Therefore, the
 			interval isn't simple.
 		</p>
+		<Figure
+			file={42}
+			caption="A diagram of a ditone from Book 2 showing continuous and transilient thirds. A continuous third is simple while a transilient third is not." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -148,6 +161,9 @@
 			a double or multiple scale context, where the tetrachords are
 			blended together.
 		</p>
+		<Figure
+			file={33}
+			caption="A diagram of the outer, middle, and leftmost intervals of a tetrachord." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -158,9 +174,11 @@
 			This is another interesting little theory. If you take a tetrachord
 			and add a disjunct tone on top of it, like you were preparing to add
 			another tetrachord to make an octave scale, the number of unique
-			simple intervals doesn't change. For instance, B-C-D-E and
-			B-C-D-E-F# both have 2 simple intervals, a semitone, and a tone.
+			simple intervals doesn't change.
 		</p>
+		<Figure
+			file={54}
+			caption="A diagram of a Diatonic tetrachord's unique intervals, and a Diatonic tetrachord with a disjunct tone's unique intervals." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
@@ -173,6 +191,9 @@
 			Fourth, or the scale would have too many successive dieses, which
 			Aristoxenus says can't be sung beyond 2.
 		</p>
+		<Figure
+			file={55}
+			caption="A diagram showing what happens when there are multiple pycna in a row." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
@@ -184,10 +205,11 @@
 			In the case of conjunct Enharmonic tetrachords, which are the only
 			tetrachords that can contain a successive ditone like what's being
 			described here, the ditone is bounded by the lowest and highest
-			notes of the Pycnum. For instance, B-B quarter #-C-E-E quarter
-			sharp-F-A, C is the top note of the lower Pycnum, and E is the lower
-			note of the higher Pycnum.
+			notes of the Pycnum.
 		</p>
+		<Figure
+			file={56}
+			caption="A diagram of conjunct Enharmonic tetrachords showing the lower ditone bounding the two pycna of the scale." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
@@ -197,17 +219,19 @@
 		<p>
 			This little quote had me scratching my head for the longest time....
 			This quote involves a Pycnum, and a tone, so Aristoxenus has to be
-			referring to disjunct Enharmonic tetrachords, right? B-B quarter
-			#-C-E-F#-G quarter b-G-B. The higher of the two notes of the tone is
-			obvious, because F# is the lowest note of the higher Pycnum.
+			referring to disjunct Enharmonic tetrachords, right? E-E quarter
+			#-F-A-B-B quarter #-C-E. The higher of the two notes of the tone is
+			obvious, because B is the lowest note of the higher Pycnum.
 		</p>
 		<p>
-			But what about E? E is followed by F#, which is a tone, making it
-			not the lowest note in a Pycnum. What I think Aristoxenus wants to
-			prove is that E, when it's part of a conjunct Enharmonic tetrachord
-			scale, is the lowest note in a Pycnum. B-B quarter #-C-E-E quarter
-			#-F-A.
+			But what about A? A is followed by B, which is a tone, making it not
+			the lowest note in a Pycnum. What I think Aristoxenus wants to prove
+			is that A, when it's part of a conjunct Enharmonic tetrachord scale,
+			is the lowest note in a Pycnum. E-E quarter #-F-A-A quarter #-Bb-D.
 		</p>
+		<Figure
+			file={57}
+			caption="A diagram showing that both notes of the tone in a disjunct Enharmonic tetrachord are the lowest notes of a Pycnum." />
 	</div>
 	<div>
 		<h5 class="ditone-text">
@@ -219,6 +243,9 @@
 			"tritone," which has it's own legacy in Western European music
 			history.
 		</p>
+		<Figure
+			file={58}
+			caption="A diagram showing why Aristoxenus forbids ditones." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -230,6 +257,9 @@
 			tetrachord is Diatonic, or that the interval between Hypate and
 			Parhypate is larger than 1/2 tone.
 		</p>
+		<Figure
+			file={59}
+			caption="A diagram showing that a disjunction is the only possible place for a tone in the Enharmonic and Chromatic genera." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -238,9 +268,11 @@
 		</h5>
 		<p>
 			This happens as a result of making a scale out of two disjunct
-			Diatonic tetrachords. For example: B-C-D-E-F#-G-A-B produces 3
-			consecutive tones between C and F#.
+			Diatonic tetrachords.
 		</p>
+		<Figure
+			file={60}
+			caption="A diagram showing that three consecutive tones are possible in the Diatonic genus." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -254,6 +286,9 @@
 			definition), or it would make it too large because the first two
 			intervals would only span 1 tone.
 		</p>
+		<Figure
+			file={61}
+			caption="A diagram showing the only possible placement of a semitone in a Diatonic tetrachord." />
 	</div>
 	<div>
 		<h5 class="ditone-text">
@@ -264,6 +299,9 @@
 			preceded by a pycnum, and it can also be succeeded by a pycnum in
 			the case of a conjunct scale.
 		</p>
+		<Figure
+			file={62}
+			caption="A diagram showing that a ditone can be followed by a tone above or below it in the Enharmonic genus." />
 	</div>
 	<div>
 		<h5 class="ditone-text">
@@ -275,24 +313,30 @@
 			scales, however when descending a scale, the ditone will always be
 			followed by an Enharmonic diesis (1/4 tone).
 		</p>
+		<Figure
+			file={63}
+			caption="A diagram showing that a ditone can be followed by a tone in an ascending scale only." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
 			“A tone can be followed by a Pycnum in the descending order.” (215)
 		</h5>
 		<p>
-			If you read this quickly, like I did att first, it looks like the
+			If you read this quickly, like I did at first, it looks like the
 			case in disjunct Enharmonic/Chromatic scales where there's a tone
 			between the tetrachords.
 		</p>
 		<p>
 			But actually, what's being described is the opposite. In the
 			descending order, if a tone were to precede a Pycnum, we would have
-			an incomplete tetrachord, since the result isn't a perfect Fourth:
-			F#-E-E-quarter b-D-B. Unless the descending order implies that
-			tetrachords can have mirrored structure like this case here, this
-			proof might be a translation error. I don't know for sure.
+			an incomplete tetrachord, since the result isn't a perfect Fourth.
+			Unless the descending order implies that tetrachords can have
+			mirrored structure like this case here, this proof might be a
+			translation error. I don't know for sure.
 		</p>
+		<Figure
+			file={64}
+			caption="A diagram showing what I think Aristoxenus means, which is a tone can follow a pycnum when descending a scale." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -303,6 +347,9 @@
 			If you try this for yourself, you won't be able to complete the
 			Fourth. For example: B-C-D-Eb.
 		</p>
+		<Figure
+			file={65}
+			caption="A diagram showing that a tone preceded and succeeded by a semitone doesn't produce a perfect Fourth." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -311,9 +358,11 @@
 		</h5>
 		<p>
 			This also describes something that can happen only in the Diatonic
-			genus, which is what happens in a disjunct Diatonic scale:
-			B-C-D-E-F#-G.
+			genus, which is what happens in a disjunct Diatonic scale.
 		</p>
+		<Figure
+			file={66}
+			caption="A diagram showing a disjunct Diatonic scale's three consecutive tones sandwiched between 2 semitones." />
 	</div>
 	<div>
 		<h5 class="ditone-text">
@@ -325,6 +374,9 @@
 			scale, or a tone, in the case of a disjunct scale.
 		</p>
 		<p>Downwards, you can go only to a pycnum.</p>
+		<Figure
+			file={67}
+			caption="A diagram showing the 3 possible progressions from a ditone." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
@@ -338,6 +390,9 @@
 		<p>
 			Downwards, you can go to a ditone, as well, in addition to a tone.
 		</p>
+		<Figure
+			file={68}
+			caption="A diagram showing the 3 possible progressions from a pycnum." />
 	</div>
 	<div>
 		<h5 class="ditone-text">
@@ -364,6 +419,9 @@
 			smaller interval, and that the pycnum sometimes gets replaced with a
 			larger interval.
 		</p>
+		<Figure
+			file={69}
+			caption="A diagram showing the 2 possible progressions from a tone." />
 	</div>
 	<div>
 		<h5 class="scales-text">
@@ -382,6 +440,9 @@
 			for in the case of the conjunct scale, so it's omitted in the case
 			of the disjunct scale.
 		</p>
+		<Figure
+			file={70}
+			caption="A diagram showing that every note in a conjunct Enharmonic or Chromatic scale is part of a pycnum." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
@@ -408,26 +469,27 @@
 			disjunct or conjunct.
 		</p>
 		<p>
-			Ascending, doesn't really make sense, since there's only one obvious
-			way for a pycnum to go, which is the next note in the pycnum. Where
-			else could it go? After all, it's part of a pycnum. I think we have
-			another case where disjunct scales might be confusing the
-			explanation. For example, if we have B-B quarter #-C-E-F#-G quarter
-			b-G-B, E which would be the bottom note of a pycnum, is going up a
-			tone. Therefore, the lowestt note of a pycnum can go up and down in
-			two ways.
+			From my understanding, this doesn't make sense the way I'm reading
+			it. The lowest note of a pycnum can go up to the next note in the
+			pycnum, but it can go down to a ditone or a tone. The middle note
+			makes sense, since it can only go to one of its neighbors. The last
+			note makes sense, as well, since it can go up to the ditone and down
+			to it's neighbor.
 		</p>
+		<Figure
+			file={71}
+			caption="A diagram showing the possible progressions from the lowest, middle, and highest notes of a pycnum, which conflicts with Aristoxenus' proof." />
 	</div>
 	<div>
 		<h5 class="pycna-text">
 			“It is required to prove that from the highest note of a Pycnum
 			there is but one progression in either direction.” (219)
 		</h5>
-		<p>The top note of a pycnum can go one place in either direction.</p>
-		<p>Upwards, it can go to Mese because the pycnum ends at Lichanus.</p>
 		<p>
-			Downwards, it can go to Parhypate because the pycnum continues in
-			that direction.
+			You can check out the diagram above to see this in action.The top
+			note of a pycnum can go one place in either direction. Upwards, it
+			can go to Mese because the pycnum ends at Lichanus. Downwards, it
+			can go to Parhypate because the pycnum continues in that direction.
 		</p>
 	</div>
 	<div>
@@ -436,8 +498,9 @@
 			there is but one progression in either direction.” (219)
 		</h5>
 		<p>
-			Up and down, the because the pycnum is 3 notes long, the middle note
-			will go to one of its neighbors.
+			You can see this in the above diagram too. Up and down, the because
+			the pycnum is 3 notes long, the middle note will go to one of its
+			neighbors.
 		</p>
 	</div>
 	<div>
@@ -454,6 +517,9 @@
 			>, and because Aristoxenus doesn't count the unison as an interval,
 			there's no way for two notes to occupy the same pitch in a pycnum.
 		</p>
+		<Figure
+			file={72}
+			caption="A diagram showing that two notes in a pycnum can't occupy the same pitch." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -468,17 +534,32 @@
 			Fifth.
 		</p>
 		<p>
-			For 2 unique intervals, we have B-C-D-E-F#. Only 1/2 tone, and 1
-			tone.
+			For 2 unique intervals, we have the Intense Diatonic tetrachord.
+			Only 1/2 tone, and 1 tone.
 		</p>
+		<Figure
+			file={26}
+			caption="A diagram of an Intense Diatonic tetrachord." />
 		<p>
-			For 3 unique intervals, we just move Parhypate: B-C quarter b-D-e.
-			3/4 tone, 1 tone, and 1 and 1/4 tones.
+			For 3 unique intervals, we can move the Parhypate down a quarter
+			tone, for example. 1/4 tone, 1 and 1/4 tones, and 1 tone.
 		</p>
+		<Figure
+			file={73}
+			caption="A diagram of a Diatonic tetrachord with an Enharmonic diesis." />
 		<p>
-			Lastly, for 4 unique intervals, we move Lichanus: B-C-D quarter b-E.
-			1/2 tone, 3/4 tone, 1 tone, and 1 and 1/4 tones.
+			Lastly, for 4 unique intervals, we need a tetrachord plus a
+			disjunction to give us 4 total intervals. Then, we would need to
+			move both Parhypate and Lichanus to produce intervals other than a
+			tone and a semi tone. For example: a Soft Chromatic diesis, and a
+			Soft Diatonic Lichanus. 1/3 tone, 11/12 tone, 1 and 1/4 tones, and 1
+			tone. The math gets wonky in this example because we need to find
+			the interval between E third sharp and F three quarter sharp, or 1/3
+			tone above E, and 1 and 1/4 tones above E.
 		</p>
+		<Figure
+			file={74}
+			caption="A diagram of a Diatonic tetrachord with a Soft Chromatic diesis and a Soft Diatonic Lichanus." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -491,13 +572,21 @@
 			intervals. Remember, we're adding the tone that completes the Fifth.
 		</p>
 		<p>
-			For 3 unique intervals, the Pycnum is equal parts: B-B quarter
-			#-C-E. 1/4 tone, 1 tone, and 2 tones.
+			For 3 unique intervals, the Pycnum is equal parts. For example, the
+			Soft Chromatic tetrachord: 1/3 tone, 1/3 tone, 1 and 5/6 tones, and
+			1 tone.
 		</p>
+		<Figure
+			file={75}
+			caption="A diagram of a Soft Chromatic tetrachord plus a disjunction." />
 		<p>
-			For 4 unique intervals, the Pycnum is unequal: B-B quarter
-			sharp-C#-E. 1/4 tone, 3/4 tone, 1 t one, and 1 and 1/2 tones.
+			For 4 unique intervals, the Pycnum is unequal. For example, a Soft
+			Chromatic diesis, and a Hemiolic Chromatic Lichanus: 1/3 tone, 5/12
+			tone, 1 and 3/4 tone, and 1 tone.
 		</p>
+		<Figure
+			file={76}
+			caption="A diagram of a tetrachord with a Soft Chromatic diesis and a Hemiolic Chromatic Lichanus." />
 	</div>
 	<div>
 		<h5 class="interval-text">
@@ -517,22 +606,24 @@
 			summary, too).
 		</p>
 		<p>
-			When the pycnum is at the bottom of the Fourth, that's one species:
-			B-B quarter #-C-E.
+			When the pycnum is at the bottom of the Fourth, that's one species,
+			which also happens to be the only melodious tetrachord of the three
+			species described.
 		</p>
+		<Figure
+			file={77}
+			caption="A diagram of a pycnum at the bottom of a Fourth." />
 		<p>
-			Another is when a diesis sanwiches the ditone: B quarter #-C-E-E
-			quarter #.
+			Another is when the interval that would typically be spanning the
+			distance from Lichanus to Mese is in the middle of the Fourth.
 		</p>
-		<p>
-			The last is when the pycnum is above the ditone: C-E-E quarter #-F.
-		</p>
-		<p>
-			Only the first case is a melodious tetrachord in Aristoxenus'
-			definition, but, nonetheless, just like a lot of the way the
-			theories are worded, and how most of the definitions are presented,
-			they're thorough.
-		</p>
+		<Figure
+			file={78}
+			caption="A diagram of a ditone sandwiched by two smaller intervals." />
+		<p>The last is when the pycnum is above the ditone.</p>
+		<Figure
+			file={79}
+			caption="A diagram of a pycnum at the top of a Fourth." />
 	</div>
 </div>
 

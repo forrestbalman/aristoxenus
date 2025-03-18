@@ -1,6 +1,9 @@
 <script>
 	import { base } from "$app/paths";
 	import ColorCode from "$lib/ColorCode.svelte";
+	import Figure from "$lib/Figure.svelte";
+	import Bold from "$lib/Bold.svelte";
+	import Italics from "$lib/Italics.svelte";
 </script>
 
 <div id="book-1" class="container">
@@ -77,18 +80,12 @@
 			a single magnitude in that third part, namely the Octave." (166)
 		</h5>
 		<p>
-			If you know about what <span class="fst-italic">enharmonic</span> means
-			in the context of Greek music theory, then there's more to unpack in
-			this quote; however, because Aristoxenus goes into detail about what
-			enharmonic (and the rest of the tetrachord genera) means later on, the
-			main takeaway from this quote is how Aristoxenus throws shade in the
-			direction of his predecessors quite frequently in his treatise. Whether
-			it's because his theories were met with resistance by his contemporaries,
-			or because he genuinely felt the need to criticize the foundations of
-			his musical progenitors, Aristoxenus' writing is full of snarky remarks
-			like this, and through the lens of someone who's excited by juicy drama
-			in historical texts, these can be fun to read in an otherwise ultra-dense,
-			stream of consciousness writing style.
+			This quote is introduced early in the book, and portrays Aristoxenus
+			in a snarky light. At this point, I knew nothing about the <Italics
+				text={"enharmonicists"} /> or the <Italics
+				text={"complete system"} />, but I do know that Aristoxenus took
+			issue with how his predecessors provided a limited view of music
+			theory.
 		</p>
 	</div>
 	<div>
@@ -139,6 +136,9 @@
 			to assume that Aristoxenus is using the string as a metaphor for the
 			states that any pitch producing object can be in.
 		</p>
+		<Figure
+			file={1}
+			caption="A diagram of moving pitches with arrows indicating tension and relaxation." />
 	</div>
 	<div>
 		<h5 class="ear-first-text">
@@ -199,6 +199,7 @@
 			</li>
 			<li>They don't have to occupy the span of an octave.</li>
 		</ol>
+		<Figure file={11} caption="A diagram of two scales." />
 	</div>
 	<div>
 		<h5 class="terms-text">
@@ -232,54 +233,54 @@
 		<ol>
 			<li>
 				Compass refers to the relative distance of intervals. For
-				example, C to D would have a smaller compass than C to F
+				example, C to D would have a smaller compass than C to F.
 			</li>
 			<li>
-				Concordant intervals are what we would call <span
-					class="fst-italic">perfect</span
-				>: Fourths, Fifths, Octaves, and their compounds. Notice that
-				Unisons are excluded, since Aristoxenus will go on the refer to
-				the Fourth as the "smallest concord." Discordant intervals are
-				all non-concordances.
+				Concordances are what we would call
+				<span class="fst-italic">perfect</span>: Fourths, Fifths,
+				Octaves, and their compounds. Notice that Unisons are excluded,
+				since Aristoxenus will go on the refer to the Fourth as the
+				"smallest concord." Discordant intervals are all
+				non-concordances.
 			</li>
+			<Figure
+				file={9}
+				caption="A diagram of concords within the Octave." />
 			<li>
-				While our understanding of simple and compound intervals has to
-				do with them being contained within the octave or a sum of a
-				simple interval and an octave, Aristoxenus may not be using the
-				term in the same way. Compound intervals might be intervals that
-				can be divided into smaller intervals. For example, a Fourth
-				might be considered compound because it can be divided into a
-				series of tones, semitones, and even smaller intervals. Later in
-				the treatise, Aristoxenus will go on to explain more about how
-				context determines whether larger intervals (like the ditone
-				(major Third)) can be simple or compound depending on context.
+				An interval is simple if it's less than or equal to an octave.
+				Compound intervals are simple intervals with an added octave.
 			</li>
+			<Figure
+				file={17}
+				caption="A diagram of a third, which is a simple interval, and a tenth, which is a compound interval." />
 			<li>
-				Division according to the musical genus is a bit more
-				convoluted, and gets explained indirectly in more detail later
-				in the treatise. <span class="fst-italic">Genus</span>
-				refers to the quality of the 3 types of tetrachords (4 note pitch
-				collections that Aristoxenus explains in much more detail later,
-				but he writes about it as if you're already familiar with the concept).
-				From what I can gather from this, it can refer to either the interval
-				belonging to a particular genus, or a compound interval's genus as
-				a result of it being divided in a particular fashion. My hunch is
-				that it's the latter, since Aristoxenus goes on to talk about scales
-				being classified using the same qualities as intervals, with a few
-				additional qualities as well.
+				Division by musical genus is trickier and isn't exactly
+				clarified later. Genus refers to the three families of
+				tetrachords, which are groups of pitches spanning a perfect
+				fourth that serve as the building blocks for longer scales (like
+				the ones we are familiar with). Though an interval may be in
+				multiple tetrachords, its context differs. For example, both
+				Diatonic and Enharmonic tetrachords contain a semitone, but in
+				the Enharmonic genus, it's divided into two quarter tones. I
+				think this relates to Aristoxenus’ ideas of continuity and
+				transilience.
 			</li>
+			<Figure
+				file={18}
+				caption="A semitone in a Diatonic tetrachord, versus a semitone in an Enharmonic tetrachord." />
 			<li>
 				An interval's rationality, ultimately, has to do with it's
 				ability to be expressed as a ratio of whole numbers. A perfect
-				Fourth, for instance, can be represented as a 4:3 ratio above
-				the reference pitch. However, while Aristoxenus doesn't outright
-				reject the mathematical principles that go into explaining the
-				theory behind the intervals, Aristoxenus puts more of an
-				emphasis on the ear's ability to perceive pitch. This results in
-				Aristoxenus making use of intervals like the quarter tone, for
-				instance. It can be identified by ear, and sung, but expressing
-				it as a whole number ratio isn't practical.
+				Fifth, for instance, can be represented as a 3:2 ratio above the
+				reference pitch (when using Pythagorean tuning). However,
+				Aristoxenus puts more of an emphasis on the ear's ability to
+				perceive pitch. So, Aristoxenus makes use of intervals like the
+				quarter tone, for instance. It can be identified by ear, and
+				sung, but expressing it as a whole number ratio isn't practical.
 			</li>
+			<Figure
+				file={19}
+				caption="A diagram of a perfect Fifth, which is a rational interval, and a quarter tone, which is an irrational interval." />
 		</ol>
 	</div>
 	<div>
@@ -294,41 +295,38 @@
 		</p>
 		<ol>
 			<li>
-				<span class="fw-bold">Conjunct and disjunct</span> refers to the
-				scales formation as a series of tetrachords. Conjunct refers to a
-				scale that is formed by tetrachords that share a note. For example,
-				a scale that consists of C > D > E > F > G > A > B, is a series of
-				two intervallically identical tetrachords that share the note F.
-				Disjunct refers to a scale that is formed by tetrachords that have
-				a space in between them (Aristoxenus elaborates later that this gap
-				is always a tone). For example, a scale that consists of C > D >
-				E > F > G > A > B > C, is a series of two tetrachords (that happen
-				to have different intervallic profiles) that have a gap in between
-				them.
+				When you have two tetrachords that are linked together by a
+				shared note, the scale they form is considered <Bold
+					text="conjunct" />. If the two tetrachords are separated by
+				a tone, the scale they form is considered <Bold
+					text="disjunct" />. In order for a conjunct scale to
+				complete the octave, an additional tone needs to be added above
+				the last note of the second tetrachord.
 			</li>
+			<Figure
+				file={20}
+				caption="A diagram of a conjunct and disjunct scales." />
 			<li>
-				<span class="fw-bold">Transilient and continuous</span> refers to
-				the way notes progress from one to the next. Transilient refers to
-				the presence of a gap larger than a tone between notes. For example,
-				C > E > G, which looks like a major triad, could be described as
-				a transilient scale. Continuous refers to scales with stepwise (or
-				smaller) distances between notes. For example, C > D > E would be
-				considered continuous.
+				<Bold text={"Continuous"} /> scales are groups of notes that move
+				from one to the next as they occur in the genus. Notes that move
+				further than their neighboring note are considered <Bold
+					text={"transilient"} />. The wording <Italics
+					text={"in the genus"} /> is important here, because some scales
+				might be continuous in one genus, but transilient in another.
 			</li>
+			<Figure
+				file={21}
+				caption="A diagram of a continuous and transilient scales from the Diatonic genus." />
 			<li>
-				<span class="fw-bold">Single, double, or multiple</span>
-				refers to the number of scales needed to construct it. A tetrachord,
-				for instance, would be classified as a single scale because it's
-				a standalone unit used to make larger scales. A double scale would
-				be a scale comprised of two tetrachords, like the C > D > E > F >
-				G > A > B > C scale I mentioned earlier. A multiple scale would be
-				a scale comprised of more than two tetrachords. The introduction
-				of the book talks about the
-				<span class="fst-italic">Greater Complete System</span>, which
-				is a series of 4 tetrachords that span the entire compass of
-				what Aristoxenus considered to be the practical range of the
-				voice.
+				If a scale is made up of one or fewer tetrachords, it's
+				considered <Bold text={"single"} />. If a scale is made up of 2
+				tetrachords, it's considered <Bold text={"double"} />. If a
+				scale is made up of 3 or more tetrachords, it's considered <Bold
+					text={"multiple"} />.
 			</li>
+			<Figure
+				file={22}
+				caption="A diagram of a single, double, and multiple scale." />
 		</ol>
 	</div>
 	<div>
@@ -351,14 +349,19 @@
 			reverence due to it being the "first and oldest," since he suggests
 			it was the first genus that was discovered.
 		</p>
+		<Figure file={2} caption="A diagram of an Enharmonic tetrachord." />
 		<p>
 			Chromatic is also really interesting because all Aristoxenus says
 			about it is that it comes second. There's probably a bunch of
 			research that can (or has) been done about the Chromatic genus in
 			particular, but seeing that we'll find out that the Chromatic genus
 			is arguably the most complex of the three, it's interesting to see
-			that Aristoxenus doesn't go into much detail about it here.
+			that Aristoxenus doesn't go into much detail about it here. The
+			numbers in diagrams this point forward are the number of cents added
+			or subtracted from the pitch below it due to the lack of a unique
+			symbol to represent the division beyond a quarter tone.
 		</p>
+		<Figure file={3} caption="A diagram of a Chromatic tetrachord." />
 		<p>
 			Lastly, the diatonic genus, which we know to be most akin to the
 			major scale using our modern sensibilities, is described to have
@@ -372,6 +375,7 @@
 			or not Diatonic tetrachords were comprised of the intervals we think
 			they were.
 		</p>
+		<Figure file={4} caption="A diagram of a Diatonic tetrachord." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -444,6 +448,9 @@
 			isn't assigned to a particular genus because it can be found in both
 			Chromatic and Diatonic tetrachords (more on this later).
 		</p>
+		<Figure
+			file={5}
+			caption="A diagram of showcasing the diesis of a tetrachord. This tetrachord would be considered Chromatic with an Enharmonic diesis." />
 	</div>
 	<div>
 		<h3>Differences of the genera (180)</h3>
@@ -471,6 +478,9 @@
 			in tetrachord referred to the number of notes, but it could also
 			refer to the outer interval.
 		</p>
+		<Figure
+			file={16}
+			caption="A perfect Fourth. The allowable range of a tetrachord." />
 	</div>
 	<div>
 		<h5 class="terms-text">
@@ -485,6 +495,7 @@
 			Here, Aristoxenus introduces the names of the scale degrees: Hypate,
 			Parhypate, Lichanus, and Mese.
 		</p>
+		<Figure file={6} caption="A diagram of the scale degrees." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -501,6 +512,9 @@
 			Mese (scale degrees 3 and 4), which is that the interval must be
 			between 1 and 2 tones, inclusive.
 		</p>
+		<Figure
+			file={7}
+			caption="A diagram of the interval limits between Lichanus and Mese." />
 		<p>
 			When the interval between Lichanus and Mese is a tone, the
 			tetrachord can be classified as Diatonic. And when the interval
@@ -552,19 +566,36 @@
 			half tones to follow along with the math here.
 		</p>
 		<p>
-			If the smallest diesis is a quarter tone, and the largest interval
-			from Lichanus to Mese is 2 tones, the smallest extreme must be a
-			quarter tone (or the smallest diesis).
+			First, we're going to find out that the interval between Hypate and
+			Parhypate is the smallest interval in the tetrachord, which means
+			this interval can be equal to or larger than. So, if the smallest
+			allowable melodic interval is a quarter tone, the interval from
+			Parhypate to Lichanus can't be smaller than a quarter tone.
 		</p>
 		<p>
-			If the largest interval from Hypate to Parhypate is a semi tone, and
-			the smallest interval from Lichanus to Mese is 1 tone, the largest
-			extreme must be a tone.
+			We can find the upper limit of the interval by hypothesizing about a
+			tetrachord with a quarter tone leftmost interval, and a tone
+			rightmost interval. If a tetrachord has a total of 2 and a half
+			tones, that means the middle interval can't be larger than 1 and a
+			quarter tones. This is confusing, since Aristoxenus seems to be
+			implying that the middle interval is between a quarter tone and a
+			tone, but the phrasing might just be awkward. Instead, he might be
+			saying that the total range is a tone <span class="fw-bold"
+				>plus</span> the smallest diesis.
 		</p>
 		<p>
 			Long story short, the range of the middle interval is a quarter tone
-			to 1 tone (inclusive).
+			to 1 and a quarter tones (inclusive).
 		</p>
+		<figure>
+			<img
+				src="{base}/8.png"
+				alt="A diagram of the interval limit between Parhypate and Lichanus."
+				class="img-fluid mb-3 rounded-1" />
+			<figcaption class="fw-lighter">
+				A diagram of the interval limit between Parhypate and Lichanus.
+			</figcaption>
+		</figure>
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -577,6 +608,9 @@
 			Parhypate (scale degrees 1 and 2), will be between a quarter tone
 			and a semi tone (inclusive).
 		</p>
+		<Figure
+			file={12}
+			caption="A diagram of the interval limit between Hypate and Parhypate." />
 	</div>
 	<div>
 		<h5 class="terms-text">
@@ -588,11 +622,15 @@
 				>pycnum</span
 			>, which refers to a special case where the lowest and middle
 			intervals of the tetrachord add up to an interval that's less than
-			the highest interval in the tetrachord. An example would be a
-			tetrachord consisting of C > Db > Ebb > F. The sum of C > Db and Db
-			> Ebb is 1 tone, while Ebb > F is 1 + 1/2 tones, which would make C
-			> Ebb a pycnum.
+			the highest interval in the tetrachord. For example, the Enharmonic
+			tetrachord might have a pycnum of 1/2 tone, leaving 2 tones for the
+			interval from Lichanus to Mese. A Diatonic tetrachord won't have a
+			pycnum because the interval from Hypate to Lichanus is 1 and 1/2
+			tones, which is larger than the rest of the tetrachord (1 tone).
 		</p>
+		<Figure
+			file={13}
+			caption="A diagram with an examples of intervals that make up a pycnum, and intervals that don't make up a pycnum." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -616,6 +654,9 @@
 			This would result in a tetrachord that looks like: 1/4 tone > 1/4
 			tone > 2 tones.
 		</p>
+		<Figure
+			file={14}
+			caption="A diagram of the tetrachord from the Enharmonic genus Aristoxenus describes in the quote." />
 		<p>
 			The second scenario describes the <span class="fst-italic"
 				>Soft</span> Chromatic tetrachord, and it involves another pycnum.
@@ -626,6 +667,9 @@
 			for 1/6s comes from having to do math with 1/2 tones and 1/3 tones, because
 			their lowest common denominator is 6.
 		</p>
+		<Figure
+			file={15}
+			caption="A diagram of a Soft tetrachord from the Chromatic genus." />
 	</div>
 	<div>
 		<h5 class="tetrachord-text">
@@ -654,6 +698,9 @@
 			take a pycnum from the same note, when this doesn't end up being the
 			case.
 		</p>
+		<Figure
+			file={23}
+			caption="A diagram of a Hemiolic Chromatic tetrachord." />
 		<p>
 			The fourth case describes what Aristoxenus will call the <span
 				class="fst-italic">Intense</span> Chromatic tetrachord. The pycnum
@@ -661,6 +708,9 @@
 			1/2 tones together. This would result in a tetrachord that looks like:
 			1/2 tone + 1/2 tone + 1 1/2 tones.
 		</p>
+		<Figure
+			file={24}
+			caption="A diagram of an Intense Chromatic tetrachord." />
 		<p>
 			The fifth case describes the a <span class="fst-italic">Tonic</span>
 			(or Soft) Diatonic tetrachord. Technically, it doesn't involve a pycnum
@@ -668,6 +718,9 @@
 			Fourth is 2 1/2 tones, the highest interval would also be 1 1/4 tones.
 			This particular scenario involves 1/2 tone + 3/4 tone + 1 1/4 tones.
 		</p>
+		<Figure
+			file={25}
+			caption="A diagram of a Tonic, or Soft, Diatonic tetrachord." />
 		<p>
 			The sixth and last case describes a tetrachord with the largest
 			possible combination of lower intervals: a diesis of 1/2 tone and a
@@ -675,6 +728,9 @@
 			describes in this 6-part process that has a high interval that is
 			smaller than the sum of the two lower intervals.
 		</p>
+		<Figure
+			file={26}
+			caption="A diagram of an Intense Diatonic tetrachord." />
 	</div>
 	<div>
 		<h5 class="ear-first-text">
@@ -710,6 +766,9 @@
 			28 quarter tones. However, singing more than a tone (let alone an
 			octave) in consecutive quarter tones isn't practical.
 		</p>
+		<Figure
+			file={27}
+			caption="An impractical-to-sing scale of consecutive quarter tones from E to G." />
 	</div>
 	<div>
 		<h5 class="voice-text">
@@ -740,10 +799,12 @@
 			multiple scales, as well). When producing continuous scales
 			consisting of more than 1 tetrachord, each pitch in the lower
 			tetrachord will form a perfect Fourth or perfect Fifth with a pitch
-			higher in the scale. For example, if we look at the scale C > D > E
-			> F > G > A > B > C, you can pick any of the first four notes, and
-			it will form a perfect fifth with the note 5 notes above it.
+			higher in the scale. Conversely, the upper tetrachord will form a
+			concord with the lower tetrachord, as well.
 		</p>
+		<Figure
+			file={28}
+			caption="A diagram of a double scale's possible concord relationships." />
 	</div>
 	<div>
 		<h5 class="rules-text">
@@ -764,19 +825,9 @@
 			tone at the top. The interval at the top of the Fifth will always be
 			a tone in both conjunct and disjunct scales.
 		</p>
-		<p>
-			A conjunct octave scale could look like this: C > D > E > F > G > A
-			> Bb > C. The two tetrachords share F as a common tone, which makes
-			it clear that they have identical intervallic structures. The Fifth
-			is the result of adding the tone to the top of the higher
-			tetrachord.
-		</p>
-		<p>
-			A disjunct octave scale could look like this: C > D > E > F > G > A
-			> B > C. The two tetrachords are separated by a tone in the middle,
-			F > G. From this perspective we can see that the two halves of the
-			octave are intervallically identical.
-		</p>
+		<Figure
+			file={29}
+			caption="A diagram of a perfect Fourth alongside a perfect Fifth." />
 	</div>
 </div>
 
